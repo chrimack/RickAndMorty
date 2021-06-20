@@ -10,7 +10,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 app.get('/*', (req, res) => {
-  console.log(req.params);
   axios.get(url + req.url)
     .then(response => res.send(response.data))
     .catch(err => res.send(err));
