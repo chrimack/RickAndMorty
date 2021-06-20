@@ -1,12 +1,17 @@
 import React from 'react';
+import Characters from './Characters.jsx';
+import Locations from './Locations.jsx';
+import Episodes from './Episodes.jsx';
 
 
 const App = () => {
 
   return (
-    <div>
-      <h1>wubba lubba dub dub</h1>
-    </div>
+    <>
+      <Characters />
+      <Locations />
+      <Episodes />
+    </>
   );
 };
 
