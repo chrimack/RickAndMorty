@@ -34,7 +34,7 @@ const Home = () => {
 
           <Styles.linkBox>
             <Link to="episodes">Episodes</Link>
-            {/* <Styles src={require('../dist/assets/episodes.jpg')} /> */}
+            <Styles.thumbnail src={require('../dist/assets/episodes.png')} />
           </Styles.linkBox>
 
         </Styles.Links>
