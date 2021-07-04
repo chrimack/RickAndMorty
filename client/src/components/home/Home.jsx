@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Characters from './Characters.jsx';
-import Locations from './Locations.jsx';
-import Episodes from './Episodes.jsx';
+import Characters from '../characters/Characters.jsx';
+import Locations from '../locations/Locations.jsx';
+import Episodes from '../episodes/Episodes.jsx';
 import Countdown from './Countdown.jsx';
 import Trailer from './Trailer.jsx';
 import {
@@ -11,7 +11,7 @@ import {
   Link
 } from 'react-router-dom';
 
-import * as Styles from '../styles/styles.js';
+import * as Styles from '../../../styles/styles.js';
 
 const Home = () => {
 
@@ -26,17 +26,17 @@ const Home = () => {
 
           <Styles.linkBox>
             <Link to="characters">Characters</Link>
-            <Styles.thumbnail src={require('../dist/assets/characters.jpeg')} />
+            <Styles.thumbnail src={require('../../../dist/assets/characters.jpeg')} />
           </Styles.linkBox>
 
           <Styles.linkBox>
             <Link to="locations">Locations</Link>
-            <Styles.thumbnail src={require('../dist/assets/locations.png')} />
+            <Styles.thumbnail src={require('../../../dist/assets/locations.png')} />
           </Styles.linkBox>
 
           <Styles.linkBox>
             <Link to="episodes">Episodes</Link>
-            <Styles.thumbnail src={require('../dist/assets/episodes.png')} />
+            <Styles.thumbnail src={require('../../../dist/assets/episodes.png')} />
           </Styles.linkBox>
 
         </Styles.Links>

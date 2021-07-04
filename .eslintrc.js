@@ -22,6 +22,7 @@ module.exports = {
     'react'
   ],
   'rules': {
+    'react/prop-types': 0,
     /* Indentation */
     'no-mixed-spaces-and-tabs': 2,
     'indent': [2, 2],

@@ -1,8 +1,8 @@
 import React from 'react';
-import Home from './Home.jsx';
-import Characters from './Characters.jsx';
-import Locations from './Locations.jsx';
-import Episodes from './Episodes.jsx';
+import Home from './home/Home.jsx';
+import Characters from './characters/Characters.jsx';
+import Locations from './locations/Locations.jsx';
+import Episodes from './episodes/Episodes.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,7 @@ const Navigation = () => {
 
   return (
     <div>
-      <img src={require('../dist/assets/title.png')}></img>
+      <img src={require('../../dist/assets/title.png')}></img>
 
       <Router>
         <div>

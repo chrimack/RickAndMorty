@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as Styles from '../styles/styles.js';
+import * as Styles from '../../../styles/styles.js';
 
 const Countdown = () => {
   const calculateTimeLeft = () => {

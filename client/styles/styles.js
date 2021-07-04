@@ -86,3 +86,36 @@ export const charList = style.div`
   justify-content: flex-start;
   align-items: flex-start;
 `;
+
+export const modalOverlay = style.div`
+  font-family: 'Roboto', sans-serif;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.8);
+
+`;
+
+export const modal = style.div`
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 700px;
+  min-width: 700px;
+  max-height: 850px;
+  min-height: 850px;
+  background-color: ${props => props.background};
+  border: solid 1px #d3d9d9;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: default;
+`;
