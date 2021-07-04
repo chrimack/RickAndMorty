@@ -8,17 +8,20 @@ export const NavBar = style.div`
 export const HomeGrid = style.div`
   display: grid;
   max-width: 1000px;
+  height: fit-content;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 40% 30% 30%;
+  margin: 10% auto;
   grid-template-areas:
     "countdown countdown countdown countdown"
     "links links links links"
     ". . . .";
-  margin: 10% auto;
 `;
 
 export const Countdown = style.div`
   grid-area: countdown;
+  height: 200px;
+  width: 75%;
 `;
 
 export const Links = style.div`
