@@ -16,6 +16,21 @@ const Characters = () => {
   };
 
   useEffect(() => {
+    if (nextPage) {
+      axios.get(nextPage)
+        .then((res) => {
+          setCharacters(prev => {
+            return [...prev, ...res.data.results];
+          });
+          setNextPage(res.data.info.next);
+        });
+    }
+    if (!nextPage) {
+      console.log(characters);
+    }
+  }, [nextPage]);
+
+  useEffect(() => {
     getCharacters();
   }, []);
 

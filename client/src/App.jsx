@@ -1,15 +1,14 @@
 import React from 'react';
 import Navigation from './Navigation.jsx';
-
-import Reset from '../styles/reset.js';
+import { Normalize } from 'styled-normalize';
 
 
 const App = () => {
 
   return (
     <>
+      <Normalize />
       <Navigation />
-      <Reset />
     </>
   );
 };
