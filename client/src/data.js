@@ -21574,23 +21574,32 @@ let allLocations = [
   }
 ];
 
-allCharacters = allCharacters.sort((a, b) => {
-  if (a.name < b.name) { return -1; }
-  if (b.name < a.name) { return 1; }
-  return 0;
-});
+allCharacters = allCharacters
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .reduce((r, e) => {
+    let key = e.name[0];
+    if (!r[key]) { r[key] = []; }
+    r[key].push(e);
+    return r;
+  }, {});
 
-allEpisodes = allEpisodes.sort((a, b) => {
-  if (a.name < b.name) { return -1; }
-  if (b.name < a.name) { return 1; }
-  return 0;
-});
+allEpisodes = allEpisodes
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .reduce((r, e) => {
+    let key = e.name[0];
+    if (!r[key]) { r[key] = []; }
+    r[key].push(e);
+    return r;
+  }, {});
 
-allLocations = allLocations.sort((a, b) => {
-  if (a.name < b.name) { return -1; }
-  if (b.name < a.name) { return 1; }
-  return 0;
-});
+allLocations = allLocations
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .reduce((r, e) => {
+    let key = e.name[0];
+    if (!r[key]) { r[key] = []; }
+    r[key].push(e);
+    return r;
+  }, {});
 
 module.exports = {
   allCharacters,

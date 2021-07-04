@@ -55,6 +55,8 @@ export const thumbnail = style.img`
 export const flexWidth = style.div`
   display: flex;
   justify-content: space-around;
+  width: 70%;
+  margin: 0 auto;
 `;
 
 export const smallFlexCol = style.div`
