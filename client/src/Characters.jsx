@@ -4,20 +4,40 @@ import { allCharacters } from './data.js';
 import * as Styles from '../styles/styles.js';
 
 const Characters = () => {
+  const [display, setDisplay] = useState('A');
 
 
 
   return (
     <>
+      {/* render letters */}
       <Styles.flexWidth>
         {Object.keys(allCharacters)
           .map(letter => {
             return (
-              <span key={letter}>{letter}</span>
+              <span
+                key={letter}
+                onClick={(e) => setDisplay(e.target.innerHTML)}
+              >
+                {letter}
+              </span>
             );
           })
         }
       </Styles.flexWidth>
+      <Styles.charList>
+        {allCharacters[display].map((character, i) => {
+          return (
+            <span
+              key={i}
+              title={character.id}
+              onClick={(e) => console.log(e.target.title)}
+            >
+              {character.name}
+            </span>
+          );
+        })}
+      </Styles.charList>
     </>
   );
 };

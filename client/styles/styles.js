@@ -74,3 +74,15 @@ export const listText = style.span`
   display: block;
   font-size: 2em;
 `;
+
+export const charList = style.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 25vh;
+  width: 50vw;
+  margin: 30px auto;
+  align-content: space-around;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
