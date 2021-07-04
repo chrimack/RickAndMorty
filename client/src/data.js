@@ -18285,7 +18285,7 @@ const locs = [
   }
 ];
 
-const allCharacters = [
+let allCharacters = [
   {
     'id': 1,
     'name': 'Rick Sanchez'
@@ -20972,7 +20972,7 @@ const allCharacters = [
   }
 ];
 
-const allEpisodes = [
+let allEpisodes = [
   {
     'id': 1,
     'name': 'Pilot'
@@ -21139,7 +21139,7 @@ const allEpisodes = [
   }
 ];
 
-const allLocations = [
+let allLocations = [
   {
     'id': 1,
     'name': 'Earth (C-137)'
@@ -21573,3 +21573,27 @@ const allLocations = [
     'name': 'Defiance\'s Base'
   }
 ];
+
+allCharacters = allCharacters.sort((a, b) => {
+  if (a.name < b.name) { return -1; }
+  if (b.name < a.name) { return 1; }
+  return 0;
+});
+
+allEpisodes = allEpisodes.sort((a, b) => {
+  if (a.name < b.name) { return -1; }
+  if (b.name < a.name) { return 1; }
+  return 0;
+});
+
+allLocations = allLocations.sort((a, b) => {
+  if (a.name < b.name) { return -1; }
+  if (b.name < a.name) { return 1; }
+  return 0;
+});
+
+module.exports = {
+  allCharacters,
+  allEpisodes,
+  allLocations
+};

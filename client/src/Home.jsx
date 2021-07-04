@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Characters from './Characters.jsx';
 import Locations from './Locations.jsx';
 import Episodes from './Episodes.jsx';
+import Countdown from './Countdown.jsx';
+import Trailer from './Trailer.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +19,7 @@ const Home = () => {
     <>
       <Styles.HomeGrid>
         <Styles.Countdown>
-
+          <Countdown />
         </Styles.Countdown>
 
         <Styles.Links>
@@ -38,6 +40,10 @@ const Home = () => {
           </Styles.linkBox>
 
         </Styles.Links>
+
+        <Styles.Trailer>
+          <Trailer />
+        </Styles.Trailer>
 
       </Styles.HomeGrid>
 
