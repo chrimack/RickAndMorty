@@ -88,6 +88,7 @@ export const charList = style.div`
 `;
 
 export const charDetails = style.div`
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,3 +104,8 @@ export const charPic = style.img`
   border-radius: 5%;
 `;
 
+export const flexBox = style.div`
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+`;

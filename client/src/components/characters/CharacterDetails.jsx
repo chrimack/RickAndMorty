@@ -10,8 +10,6 @@ const CharacterDetails = ({ type, id }) => {
 
   const getEpisodesAndLocations = (episodes, location, origin) => {
     let episodeIds = '';
-    // let currentLocationId = location.url.slice(location.url.lastIndexOf('/') + 1);
-    // let originLocationId = origin.url.slice(origin.url.lastIndexOf('/') + 1);
 
     episodes.forEach((ep, i) => {
       let id = ep.slice(ep.lastIndexOf('/') + 1);
@@ -38,15 +36,6 @@ const CharacterDetails = ({ type, id }) => {
         setEpisodes(newEpisodes);
       })
       .catch(e => console.log(e));
-
-    // axios.get(`/location/${currentLocationId}`)
-    //   .then(res => setCurrentLocation(res.data.name))
-    //   .catch(e => console.log(e));
-
-    // axios.get(`/location/${originLocationId}`)
-    //   .then(res => setOrigin(res.data.name))
-    //   .catch(e => console.log(e));
-
   };
 
   useEffect(() => {
@@ -58,30 +47,42 @@ const CharacterDetails = ({ type, id }) => {
       .catch(e => console.log(e));
   }, []);
 
+  // useEffect(() => {
+
+  // }, [info]);
+
   return (
-    origin ? (
+    info.name ? (
       <Styles.charDetails>
+
         <Styles.charPic src={info.image} alt={info.name} />
         <Styles.charName>
           <span>{info.name}</span>
         </Styles.charName>
-        <div>
-          <ul>
-            <li>Origin: {info.origin.name}</li>
-            <li>Current Location: {info.location.name}</li>
-            <li>Status: {info.status}</li>
-            <li>Species: {info.species}</li>
-            <li>Type: {info.type}</li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            {episodes.map((episode, i) => {
-              return <li key={i}>{episode}</li>;
-            })}
-          </ul>
-        </div>
+
+        <Styles.flexBox>
+          <div>
+            <ul>
+              <li><strong>Origin: </strong> {info.origin.name}</li>
+              <li><strong>Current Location: </strong>{info.location.name}</li>
+              <li><strong>Status: </strong>{info.status}</li>
+              <li><strong>Species: </strong>{info.species}</li>
+              {info.type ? <li><strong>Type: </strong>{info.type}</li> : null}
+
+            </ul>
+          </div>
+          <div>
+            <label>Episodes:</label>
+            <ul>
+              {episodes.map((episode, i) => {
+                return <li key={i}>{episode}</li>;
+              })}
+            </ul>
+          </div>
+        </Styles.flexBox>
+
         <div>Back to characters</div>
+
       </Styles.charDetails>
     ) : null
   );
