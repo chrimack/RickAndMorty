@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
 
-const CharacterDetails = ({ type, id }) => {
-  const [info, setInfo] = useState({});
+const CharacterDetails = () => {
+  const [character, setCharacter] = useState({});
   const [episodes, setEpisodes] = useState([]);
   const [currentLocation, setCurrentLocation] = useState('');
   const [origin, setOrigin] = useState('');
 
-  const getEpisodesAndLocations = (episodes, location, origin) => {
+  // get id from url
+  let { id } = useParams();
+
+  const getEpisodes = (episodes) => {
     let episodeIds = '';
 
     episodes.forEach((ep, i) => {
@@ -32,42 +36,39 @@ const CharacterDetails = ({ type, id }) => {
           newEpisodes.push(res.data.name);
         }
 
-
         setEpisodes(newEpisodes);
       })
       .catch(e => console.log(e));
   };
 
   useEffect(() => {
-    axios.get(`/${type}/${id}`)
-      .then(res => {
-        setInfo(res.data);
-        getEpisodesAndLocations(res.data.episode, res.data.location, res.data.origin);
-      })
-      .catch(e => console.log(e));
+    if (id) {
+      axios.get(`/character/${id}`)
+        .then(res => {
+          setCharacter(res.data);
+          getEpisodes(res.data.episode);
+        })
+        .catch(e => console.log(e));
+    }
   }, []);
 
-  // useEffect(() => {
-
-  // }, [info]);
-
   return (
-    info.name ? (
-      <Styles.charDetails>
+    character.name ? (
+      <Styles.DetailsBox>
 
-        <Styles.charPic src={info.image} alt={info.name} />
-        <Styles.charName>
-          <span>{info.name}</span>
-        </Styles.charName>
+        <Styles.charPic src={character.image} alt={character.name} />
+        <Styles.detailsName>
+          <span>{character.name}</span>
+        </Styles.detailsName>
 
         <Styles.flexBox>
           <div>
             <ul>
-              <li><strong>Origin: </strong> {info.origin.name}</li>
-              <li><strong>Current Location: </strong>{info.location.name}</li>
-              <li><strong>Status: </strong>{info.status}</li>
-              <li><strong>Species: </strong>{info.species}</li>
-              {info.type ? <li><strong>Type: </strong>{info.type}</li> : null}
+              <li><strong>Origin: </strong> {character.origin.name}</li>
+              <li><strong>Current Location: </strong>{character.location.name}</li>
+              <li><strong>Status: </strong>{character.status}</li>
+              <li><strong>Species: </strong>{character.species}</li>
+              {character.type ? <li><strong>Type: </strong>{character.type}</li> : null}
 
             </ul>
           </div>
@@ -81,9 +82,11 @@ const CharacterDetails = ({ type, id }) => {
           </div>
         </Styles.flexBox>
 
-        <div>Back to characters</div>
+        <div>
+          <Link to='/characters'>Back to characters</Link>
+        </div>
 
-      </Styles.charDetails>
+      </Styles.DetailsBox>
     ) : null
   );
 };

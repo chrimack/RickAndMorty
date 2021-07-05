@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
 import CharacterDetails from './CharacterDetails.jsx';
 
 const Characters = () => {
   const [display, setDisplay] = useState('A');
-  const [isOpen, setIsOpen] = useState(false);
-  const [id, setId] = useState(0);
-
-  const renderCharacter = (e) => {
-    setId(e.target.title);
-    setIsOpen(true);
-  };
 
   const renderCharacterList = () => {
     return (
@@ -32,50 +26,24 @@ const Characters = () => {
         </Styles.flexWidth>
 
         {/* display all characters from displayed letter */}
-        <Styles.charList>
+        <Styles.displayList>
           {allCharacters[display].map((character, i) => {
             return (
-              <span
-                key={i}
-                title={character.id}
-                onClick={renderCharacter}
-              >
-                {character.name}
+              <span key={i}>
+                <Link to={`/characters/${character.id}`}>{character.name}</Link>
               </span>
             );
           })}
-        </Styles.charList>
+        </Styles.displayList>
       </>
     );
   };
 
   return (
     <>
-      {isOpen ? (
-        <CharacterDetails type={'character'} id={id} setIsOpen={setIsOpen} />
-      ) : (
-        renderCharacterList()
-      )}
+      {renderCharacterList()}
     </>
   );
 };
 
 export default Characters;
-
-// const renderChars = () => {
-//   return Object.entries(allCharacters)
-//     .map(([key, value], i) => {
-//       return (
-//         <div key={i}>
-//           <strong>{key}</strong>
-//           {value.map((character, j) => {
-//             return (
-//               <div key={j}>
-//                 {character.name}
-//               </div>
-//             );
-//           })}
-//         </div>
-//       );
-//     });
-// };

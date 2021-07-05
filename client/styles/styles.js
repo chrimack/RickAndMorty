@@ -1,7 +1,12 @@
 import style from 'styled-components';
 
-export const NavBar = style.div`
-  display: flex;
+export const Main = style.div`
+  font-family: sans-serif;
+`;
+
+export const Title = style.img`
+  width: 700px;
+
 `;
 
 export const HomeGrid = style.div`
@@ -75,7 +80,7 @@ export const listText = style.span`
   font-size: 2em;
 `;
 
-export const charList = style.div`
+export const displayList = style.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -87,15 +92,16 @@ export const charList = style.div`
   align-items: flex-start;
 `;
 
-export const charDetails = style.div`
+export const DetailsBox = style.div`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  width: 1000px;
 `;
 
-export const charName = style.div`
+export const detailsName = style.div`
   font-size: 2em;
 `;
 

@@ -3,18 +3,21 @@ import Home from './home/Home.jsx';
 import Characters from './characters/Characters.jsx';
 import Locations from './locations/Locations.jsx';
 import Episodes from './episodes/Episodes.jsx';
+import CharacterDetails from './characters/CharacterDetails.jsx';
+import LocationDetails from './locations/LocationDetails.jsx';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+import * as Styles from '../../styles/styles.js';
 
 const Navigation = () => {
 
   return (
-    <div>
-      <img src={require('../../dist/assets/title.png')}></img>
+    <Styles.Main>
+      <Styles.Title src={require('../../dist/assets/title.png')} />
 
       <Router>
         <div>
@@ -46,10 +49,12 @@ const Navigation = () => {
             <Route export path="/episodes">
               <Episodes />
             </Route>
+            <Route path='/characters/:id' component={CharacterDetails} />
+            <Route path='/locations/:id' component={LocationDetails} />
           </Switch>
         </div>
       </Router>
-    </div>
+    </Styles.Main>
   );
 };
 
