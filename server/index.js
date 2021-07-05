@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-//const api = require('./handlers.js');
+const db = require('../db');
+
 const app = express();
 const port = 3000;
 const url = 'https://rickandmortyapi.com/api';
