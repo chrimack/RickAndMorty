@@ -31,33 +31,28 @@ const Countdown = () => {
     return () => clearTimeout(timer);
   });
 
-  const renderTimer = () => {
-    let intervals = Object.keys(timeLeft);
+  return (
+    <Styles.flexBox>
 
-    return (
-      <ul>
-        {intervals.map(interval => {
+      <Styles.heading>
+        COUNTDOWN TO NEXT EPISODE:
+      </Styles.heading>
+
+      <Styles.timer>
+
+        {Object.keys(timeLeft).map(interval => {
           return (
-            <Styles.listItem key={interval}>
+            <Styles.smallFlexCol key={interval}>
               <Styles.listText>{timeLeft[interval].padStart(2, '0')}</Styles.listText>
-              {interval}
-            </Styles.listItem>
+              {interval.toUpperCase()}
+            </Styles.smallFlexCol>
           );
         })}
-      </ul>
-    );
-  };
 
-  return (
-    <>
-      <h4>COUNTDOWN TO NEXT EPISODE:</h4>
-      {renderTimer()}
-    </>
+      </Styles.timer>
+
+    </Styles.flexBox>
   );
 };
 
 export default Countdown;
-
-{ /* <span key={interval}>
-  {timeLeft[interval].padStart(2, '0')}{' '}{interval[0]}
-</span> */ }

@@ -2,6 +2,8 @@ import style from 'styled-components';
 
 export const Main = style.div`
   font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
 export const Title = style.img`
@@ -25,8 +27,12 @@ export const HomeGrid = style.div`
 
 export const Countdown = style.div`
   grid-area: countdown;
-  height: 200px;
-  width: 75%;
+  width: 100%;
+`;
+
+export const timer = style.div`
+  display: flex;
+  font-family: 'Syncopate', sans-serif;
 `;
 
 export const Links = style.div`
@@ -67,6 +73,9 @@ export const flexWidth = style.div`
 export const smallFlexCol = style.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: 10px 30px 0 0;
+  width: 150px;
 `;
 
 export const listItem = style.li`
@@ -76,8 +85,10 @@ export const listItem = style.li`
 `;
 
 export const listText = style.span`
+  font-family:  'Big Shoulders Stencil Display', arial;
+  color: red;
   display: block;
-  font-size: 2em;
+  font-size: 8em;
 `;
 
 export const displayList = style.div`
@@ -114,4 +125,11 @@ export const flexBox = style.div`
   display: flex;
   flex-direction: column;
   align-content: flex-start;
+`;
+
+export const heading = style.div`
+  font-family: 'Syncopate', sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 20px;
 `;
