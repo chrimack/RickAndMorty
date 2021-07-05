@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
-import Details from './Details.jsx';
+import CharacterDetails from './CharacterDetails.jsx';
 
 const Characters = () => {
   const [display, setDisplay] = useState('A');
@@ -52,7 +52,7 @@ const Characters = () => {
   return (
     <>
       {isOpen ? (
-        <Details type={'character'} id={id} setIsOpen={setIsOpen} />
+        <CharacterDetails type={'character'} id={id} setIsOpen={setIsOpen} />
       ) : (
         renderCharacterList()
       )}

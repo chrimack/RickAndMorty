@@ -2,10 +2,10 @@ import style from 'styled-components';
 
 export const NavBar = style.div`
   display: flex;
-
 `;
 
 export const HomeGrid = style.div`
+  font-family: sans-serif;
   display: grid;
   max-width: 1000px;
   height: 1000px;
@@ -87,35 +87,19 @@ export const charList = style.div`
   align-items: flex-start;
 `;
 
-export const modalOverlay = style.div`
-  font-family: 'Roboto', sans-serif;
-  z-index: 5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  background-color: rgba(0, 0, 0, 0.8);
-
-`;
-
-export const modal = style.div`
-  z-index: 10;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 700px;
-  min-width: 700px;
-  max-height: 850px;
-  min-height: 850px;
-  background-color: ${props => props.background};
-  border: solid 1px #d3d9d9;
-  border-radius: 10px;
-  padding: 15px;
+export const charDetails = style.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  cursor: default;
+  align-items: center;
+  justify-content: space-between;
 `;
+
+export const charName = style.div`
+  font-size: 2em;
+`;
+
+export const charPic = style.img`
+  width: 35vw;
+  border-radius: 5%;
+`;
+
