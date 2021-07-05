@@ -10,6 +10,14 @@ const LocationDetails = () => {
   let { id } = useParams();
 
   const getCharacters = (characters) => {
+    if (!characters.length) {
+      setCharacters([{
+        id: 0,
+        name: '¯\\_(ツ)_/¯'
+      }]);
+      return;
+    }
+
     let characterIds = '';
 
     characters.forEach((char, i) => {
@@ -42,6 +50,7 @@ const LocationDetails = () => {
     if (id) {
       axios.get(`/location/${id}`)
         .then(res => {
+
           setLocation(res.data);
           getCharacters(res.data.residents);
         })
@@ -68,15 +77,23 @@ const LocationDetails = () => {
             <label>Residents:</label>
             <ul>
               {characters.map((character, i) =>{
-                return (
-                  <Link to={`/characters/${character.id}`} key={i}>
-                    {character.name}
-                  </Link>
+                return character.id ? (
+                  <li key={i}>
+                    <Link to={`/characters/${character.id}`}>
+                      {character.name}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={i}><span>{character.name}</span></li>
                 );
               })}
             </ul>
           </div>
         </Styles.flexBox>
+
+        <div>
+          <Link to='/locations'>Back to locations</Link>
+        </div>
 
       </Styles.DetailsBox>
     </>
@@ -84,3 +101,4 @@ const LocationDetails = () => {
 };
 
 export default LocationDetails;
+
