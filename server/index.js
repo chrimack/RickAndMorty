@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const axios = require('axios');
 const db = require('../db');
+const character = require('./controllers/character');
+const episode = require('./controllers/episode');
+const location = require('./controllers/location');
 
 const app = express();
 const port = 3000;

@@ -1,4 +1,4 @@
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const episodeSchema = new mongoose.Schema({
   name: { type: String, required: true },

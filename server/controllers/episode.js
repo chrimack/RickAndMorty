@@ -1,4 +1,4 @@
-const Episode = require('../../db/models/Epidsode');
+const Episode = require('../../db/models/Episode');
 
 exports.addEpisode = (req, res) => {
   let episode = req.body;
