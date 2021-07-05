@@ -17,46 +17,56 @@ import * as Styles from '../../styles/styles.js';
 const Navigation = () => {
 
   return (
-    <Styles.Main>
-      <Styles.Title src={require('../../dist/assets/title.png')} />
+    <>
+
 
       <Router>
-        <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/characters">Characters</Link>
-            </li>
-            <li>
-              <Link to="/locations">Locations</Link>
-            </li>
-            <li>
-              <Link to="/episodes">Episodes</Link>
-            </li>
-          </ul>
-          <hr />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/characters">
-              <Characters />
-            </Route>
-            <Route exact path="/locations">
-              <Locations />
-            </Route>
-            <Route exact path="/episodes">
-              <Episodes />
-            </Route>
-            <Route path='/characters/:id' component={CharacterDetails} />
-            <Route path='/locations/:id' component={LocationDetails} />
-            <Route path='/episodes/:id' component={EpisodeDetails} />
-          </Switch>
-        </div>
+        <Styles.NavBackground>
+          <Styles.Main>
+
+            <Styles.NavBar>
+
+              <Styles.Title src={require('../../dist/assets/title.png')} />
+
+              <Styles.NavLinksList>
+                <Styles.listItem>
+                  <Styles.NavLink to="/">Home</Styles.NavLink>
+                </Styles.listItem>
+                <Styles.listItem>
+                  <Styles.NavLink to="/characters">Characters</Styles.NavLink>
+                </Styles.listItem>
+                <Styles.listItem>
+                  <Styles.NavLink to="/locations">Locations</Styles.NavLink>
+                </Styles.listItem>
+                <Styles.listItem>
+                  <Styles.NavLink to="/episodes">Episodes</Styles.NavLink>
+                </Styles.listItem>
+              </Styles.NavLinksList>
+
+            </Styles.NavBar>
+
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/characters">
+                <Characters />
+              </Route>
+              <Route exact path="/locations">
+                <Locations />
+              </Route>
+              <Route exact path="/episodes">
+                <Episodes />
+              </Route>
+              <Route path='/characters/:id' component={CharacterDetails} />
+              <Route path='/locations/:id' component={LocationDetails} />
+              <Route path='/episodes/:id' component={EpisodeDetails} />
+            </Switch>
+
+          </Styles.Main>
+        </Styles.NavBackground>
       </Router>
-    </Styles.Main>
+    </>
   );
 };
 

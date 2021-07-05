@@ -1,18 +1,44 @@
 import style from 'styled-components';
+import { Link } from 'react-router-dom';
+import banner from '../dist/assets/banner.png';
+import background from '../dist/assets/background.jpg';
 
 export const Main = style.div`
-  font-family: sans-serif;
+  font-family: 'Acme', sans-serif;
   max-width: 1200px;
   margin: 0 auto;
 `;
 
-export const Title = style.img`
-  width: 700px;
+export const NavBackground = style.div`
+`;
+
+export const NavBar = style.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 1000px;
+  margin: 0 auto;
+`;
+
+export const NavLink = style(Link)`
 
 `;
 
+export const NavLinksList = style.ul`
+  display: flex;
+  width: 30vw;
+  justify-content: space-between;
+  list-style-type: none;
+  margin-block: 0;
+  padding-inline-start: 0;
+
+`;
+
+export const Title = style.img`
+  height: 75px;
+`;
+
 export const HomeGrid = style.div`
-  font-family: sans-serif;
   display: grid;
   max-width: 1000px;
   height: 1000px;
@@ -81,7 +107,6 @@ export const smallFlexCol = style.div`
 export const listItem = style.li`
   display: inline-block;
   list-style-type: none;
-  text-transform: uppercase;
 `;
 
 export const listText = style.span`
@@ -124,7 +149,7 @@ export const charPic = style.img`
 export const flexBox = style.div`
   display: flex;
   flex-direction: column;
-  align-content: flex-start;
+  align-items: center;
 `;
 
 export const heading = style.div`
@@ -133,3 +158,4 @@ export const heading = style.div`
   font-weight: 700;
   margin-bottom: 20px;
 `;
+
