@@ -21609,19 +21609,17 @@ const getEps = () => {
 
 
     results[season] ? (
-      results[season][ep.episode] = {
+      results[season].push({
         id: ep.id,
         name: ep.name,
         characters: ep.characters
-      }
+      })
     ) : (
-      results[season] = {
-        [ep.episode]: {
-          id: ep.id,
-          name: ep.name,
-          characters: ep.characters
-        }
-      }
+      results[season] = [{
+        id: ep.id,
+        name: ep.name,
+        characters: ep.characters
+      }]
     );
 
   });

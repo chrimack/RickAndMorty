@@ -9,6 +9,7 @@ const Locations = () => {
   return (
     <>
       <Styles.flexWidth>
+
         {Object.keys(allLocations)
           .map(letter => {
             return (
@@ -20,9 +21,11 @@ const Locations = () => {
               </span>
             );
           })}
+
       </Styles.flexWidth>
 
       <Styles.displayList>
+
         {allLocations[display]
           .map((location, i) => {
             return (
@@ -31,6 +34,7 @@ const Locations = () => {
               </span>
             );
           })}
+
       </Styles.displayList>
     </>
   );

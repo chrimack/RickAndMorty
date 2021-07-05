@@ -5,6 +5,7 @@ import Locations from './locations/Locations.jsx';
 import Episodes from './episodes/Episodes.jsx';
 import CharacterDetails from './characters/CharacterDetails.jsx';
 import LocationDetails from './locations/LocationDetails.jsx';
+import EpisodeDetails from './episodes/EpisodeDetails.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -46,11 +47,12 @@ const Navigation = () => {
             <Route exact path="/locations">
               <Locations />
             </Route>
-            <Route export path="/episodes">
+            <Route exact path="/episodes">
               <Episodes />
             </Route>
             <Route path='/characters/:id' component={CharacterDetails} />
             <Route path='/locations/:id' component={LocationDetails} />
+            <Route path='/episodes/:id' component={EpisodeDetails} />
           </Switch>
         </div>
       </Router>

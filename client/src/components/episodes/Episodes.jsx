@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { allEpisodes } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
-import EpisodeDetails from './EpisodeDetails.jsx';
 
 const Episodes = () => {
-  const [display, setDisplay] = useState('A');
+  const [display, setDisplay] = useState('S01');
 
   return (
     <>
       <Styles.flexWidth>
 
         {Object.keys(allEpisodes)
-          .map(letter => {
+          .map((season, i) => {
             return (
               <span
-                key={letter}
-                onClick={(e) => setDisplay(e.target.innerHTML)}
+                key={season}
+                title={season}
+                onClick={(e) => setDisplay(e.target.title)}
               >
-                {letter}
+                Season {i + 1}
               </span>
             );
           })}
