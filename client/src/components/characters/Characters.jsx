@@ -1,47 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
+import axios from 'axios';
 import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
 import CharacterDetails from './CharacterDetails.jsx';
 
 const Characters = () => {
-  const [display, setDisplay] = useState('A');
+  const [characters, setCharacters] = useState([]);
+  const [nextPage, setNextpage] = useState('');
 
-  const renderCharacterList = () => {
-    return (
-      <>
-        {/* display all clickable letters */}
-        <Styles.flexWidth>
-          {Object.keys(allCharacters)
-            .map(letter => {
-              return (
-                <span
-                  key={letter}
-                  onClick={(e) => setDisplay(e.target.innerHTML)}
-                >
-                  {letter}
-                </span>
-              );
-            })}
-        </Styles.flexWidth>
+  let people = undefined;
+  let data = useLocation();
+  if (data.state) {
+    people = data.state.people;
+  }
 
-        {/* display all characters from displayed letter */}
-        <Styles.displayList>
-          {allCharacters[display].map((character, i) => {
-            return (
-              <span key={i}>
-                <Link to={`/characters/${character.id}`}>{character.name}</Link>
-              </span>
-            );
-          })}
-        </Styles.displayList>
-      </>
+  useEffect(() => {
+    //console.log(data);
+    return people ? (
+      Promise.all(people.map(person => {
+        return axios.get(person);
+      }))
+        .then(res => {
+          setCharacters(res.flatMap(person => {
+            return person.data;
+          }));
+        })
+    ) : (
+      axios.get('https://rickandmortyapi.com/api/character')
+        .then(res => setCharacters(res.data))
+        .catch(e => console.log(e))
     );
-  };
+  }, []);
 
   return (
     <>
-      {renderCharacterList()}
     </>
   );
 };

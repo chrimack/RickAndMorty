@@ -47,7 +47,7 @@ const Home = () => {
 
       </Styles.HomeGrid>
 
-      <Switch>
+      {/* <Switch>
         <Route exact path="/characters">
           <Characters />
         </Route>
@@ -57,7 +57,7 @@ const Home = () => {
         <Route export path="/episodes">
           <Episodes />
         </Route>
-      </Switch>
+      </Switch> */}
     </>
   );
 };

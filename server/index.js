@@ -13,12 +13,12 @@ const url = 'https://rickandmortyapi.com/api';
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
-app.get('/*', (req, res) => {
-  axios.get(url + req.url)
+app.get(`${url}/*`, (req, res) => {
+  console.log('url: ', req.url);
+  axios.get(req.url)
     .then(response => res.send(response.data))
-    .catch(err => res.send(err));
+    .catch(e => res.send(e));
 });
-
 
 app.listen(port, () => {
   console.log('its working');
