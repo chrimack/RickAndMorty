@@ -4,6 +4,7 @@ import axios from 'axios';
 import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
 import CharacterDetails from './CharacterDetails.jsx';
+import CharacterProfile from './CharacterProfile.jsx';
 
 const Characters = () => {
   const [characters, setCharacters] = useState([]);
@@ -16,7 +17,6 @@ const Characters = () => {
   }
 
   useEffect(() => {
-    //console.log(data);
     return people ? (
       Promise.all(people.map(person => {
         return axios.get(person);
@@ -28,13 +28,30 @@ const Characters = () => {
         })
     ) : (
       axios.get('https://rickandmortyapi.com/api/character')
-        .then(res => setCharacters(res.data))
+        .then(res => {
+          setCharacters(res.data.results);
+          setNextpage(res.data.info.next);
+        })
         .catch(e => console.log(e))
     );
   }, []);
 
   return (
     <>
+      <Styles.CharacterList>
+        {characters.map(character => {
+          return (
+            <Styles.CharLink
+              to={`/characters/${character.id}`}
+              key={character.id}
+            >
+              <CharacterProfile
+                character={character}
+              />
+            </Styles.CharLink>
+          );
+        })}
+      </Styles.CharacterList>
     </>
   );
 };

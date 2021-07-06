@@ -1,7 +1,17 @@
-import style from 'styled-components';
+import style, { createGlobalStyle } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { normalize } from 'styled-normalize';
 import banner from '../dist/assets/banner.png';
 import background from '../dist/assets/background.jpg';
+
+export const GlobalStyle = createGlobalStyle`
+  ${normalize}
+
+  html {
+    background: url(${background}) no-repeat center center fixed;
+    background-size: cover;
+  }
+`;
 
 export const Main = style.div`
   font-family: 'Acme', sans-serif;
@@ -159,3 +169,49 @@ export const heading = style.div`
   margin-bottom: 20px;
 `;
 
+export const CharacterList = style.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: auto;
+  height 70vw;
+  padding-right: 10px;
+`;
+
+export const CharacterProfile = style.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CharacterBrief = style.div`
+  display: flex;
+  flex-direction: column;
+  background: #233351;
+  padding-left: 2px;
+  opacity: .8;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+`;
+
+export const CharName = style.h3`
+  all: unset;
+  font-size: 1.5em;
+  opacity: unset;
+`;
+
+export const CharThumbnail = style.img`
+  width: 280px;
+`;
+
+export const CharLink = style(Link)`
+  height: fit-content;
+  text-decoration: none;
+  margin-bottom: 15px;
+`;
+
+export const CharText = style.p`
+  all: unset;
+  font-size: 1.2em;
+
+  opacity: unset;
+`;

@@ -18,6 +18,7 @@ const Home = () => {
   return (
     <>
       <Styles.HomeGrid>
+
         <Styles.Countdown>
           <Countdown />
         </Styles.Countdown>
@@ -47,17 +48,6 @@ const Home = () => {
 
       </Styles.HomeGrid>
 
-      {/* <Switch>
-        <Route exact path="/characters">
-          <Characters />
-        </Route>
-        <Route exact path="/locations">
-          <Locations />
-        </Route>
-        <Route export path="/episodes">
-          <Episodes />
-        </Route>
-      </Switch> */}
     </>
   );
 };
