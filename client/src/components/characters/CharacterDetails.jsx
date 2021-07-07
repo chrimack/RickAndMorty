@@ -6,6 +6,20 @@ import EpisodesList from '../episodes/EpisodesList.jsx';
 
 const CharacterDetails = () => {
   const [character, setCharacter] = useState({});
+  const [location, setLocation] = useState('');
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (character.location) {
+      let url = character.location.url;
+      setLocation(url.slice(url.lastIndexOf('/') + 1));
+    }
+
+    if (character.origin) {
+      let url = character.origin.url;
+      setOrigin(url.slice(url.lastIndexOf('/') + 1));
+    }
+  }, [character]);
 
   const url = 'https://rickandmortyapi.com/api/character';
 
@@ -28,17 +42,66 @@ const CharacterDetails = () => {
 
         <Styles.CharacterFull>
 
-          <Styles.CharName>{character.name}</Styles.CharName>
+          <Styles.displayText size="1.8em">{character.name}</Styles.displayText>
 
-          <Styles.flexWidth>
+          <Styles.flexBox
+            align="flex-start"
+            padding="2px"
+            border="1px solid white">
 
-            <Styles.CharText>Status: {character.status}</Styles.CharText>
-            <Styles.CharText>Species: {character.species}</Styles.CharText>
-            { character.type ? (
-              <Styles.CharText>Type: {character.type}</Styles.CharText>
-            ) : null}
+            <Styles.displayText
+              size="1.2em">
+              Status: {character.status}
+            </Styles.displayText>
+            <Styles.displayText
+              size="1.2em">
+              Species: {character.species}
+            </Styles.displayText>
+            { character.type && (
+              <Styles.displayText
+                size="1.2em">
+                Type: {character.type}
+              </Styles.displayText>
+            )}
 
-          </Styles.flexWidth>
+          </Styles.flexBox>
+
+          {character.location && (
+            <Styles.divLink
+              to={`../locations/${location}`}
+              width="100%"
+              padding="5px">
+
+              <Styles.flexBox
+                align="flex-start"
+                border="1px solid white">
+
+                <Styles.displayText size="1.5em">Location:</Styles.displayText>
+                <Styles.displayText size="1.2em">{character.location.name}</Styles.displayText>
+
+              </Styles.flexBox>
+
+            </Styles.divLink>
+
+          )}
+
+          {character.origin && (
+            <Styles.divLink
+              to={`../locations/${origin}`}
+              width="100%"
+              padding="5px">
+
+              <Styles.flexBox
+                align="flex-start"
+                border="1px solid white">
+
+                <Styles.displayText size="1.5em">Origin:</Styles.displayText>
+                <Styles.displayText size="1.2em">{character.origin.name}</Styles.displayText>
+
+              </Styles.flexBox>
+
+            </Styles.divLink>
+          )}
 
         </Styles.CharacterFull>
 

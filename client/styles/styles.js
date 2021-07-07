@@ -109,6 +109,8 @@ export const link = style.a`
 export const thumbnail = style.img`
   width: 300px;
   margin: 1px;
+  border: 1px solid rgba(35,51,81,.8);
+  transition: border-color .3s ease-in-out;
 
   :hover {
     border: 1px solid white;
@@ -287,4 +289,17 @@ export const displayContainer = style.div`
   display: flex;
   width: 100%;
 
+`;
+
+export const icon = style.i`
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  margin: 3px;
+  padding: 5px;
+  border-radius: 50%;
+
+  :hover {
+    color: white;
+    border: 1px solid white;
+  }
 `;

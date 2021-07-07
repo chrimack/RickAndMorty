@@ -59,11 +59,21 @@ const EpisodesList = ({ charEpisodes, results }) => {
     }
   }, [data.results]);
 
+  let height;
+
+  if (!charEpisodes) {
+    height = '65vh';
+  } else if (charEpisodes.length <= 16) {
+    height = 'fit-content';
+  } else {
+    height = '65vh';
+  }
+
   return (
     <>
       {episodes.length ? (
         <Styles.displayList
-          height={charEpisodes ? 'fit-content' : '65vh'}
+          height={height}
           width={charEpisodes ? '100%' : 'auto'}>
 
           {episodes.map((episode, i) => {

@@ -46,7 +46,7 @@ const Locations = () => {
             placeholder="search for your favorite location"
             onChange={(e) => setSearch(e.target.value)}
           ></Styles.searchBar>
-          <i className="fas fa-search" onClick={handleSearch} ></i>
+          <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
         </Styles.flexBox>
 
         {error && (
