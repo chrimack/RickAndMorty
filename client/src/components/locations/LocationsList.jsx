@@ -1,22 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
+import useFetch from '../../hooks/useFetch.js';
 
-const LocationsList = () => {
+const LocationsList = ({ results }) => {
   const [locations, setLocations] = useState([]);
-  const [nextPage, setNextpage] = useState(null);
+  const [nextPage, setNextpage] = useState('https://rickandmortyapi.com/api/location');
 
   const url = 'https://rickandmortyapi.com/api/location';
 
   useEffect(() => {
-    axios.get(url)
-      .then(res => {
-        setLocations(res.data.results);
-        setNextpage(res.data.info.next);
-      })
-      .catch(e => console.log(e));
-  }, []);
+    // axios.get(url)
+    //   .then(res => {
+    //     setLocations(res.data.results);
+    //     setNextpage(res.data.info.next);
+    //   })
+    //   .catch(e => console.log(e));
+
+    if (results) {
+      setLocations(results.results);
+      setNextpage(results.info.next);
+    }
+  }, [results]);
+
+  const { loading, error, data, hasMore } = useFetch(nextPage);
+
+  const observer = useRef();
+
+  const lastLocationRef = useCallback(loc => {
+    if (loading) { return; }
+    if (observer.current) { observer.current.disconnect(); }
+
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        setNextpage(data.info.next);
+      }
+    });
+
+    if (loc) { observer.current.observe(loc); }
+  });
+
+  useEffect(() => {
+    if (data.results) {
+      setLocations(prev => [...prev, ...data.results]);
+    }
+  }, [data.results]);
 
   return (
     <>
@@ -24,11 +53,13 @@ const LocationsList = () => {
         <Styles.displayList
           height="65vh"
         >
-          {locations.map(location => {
+          {locations.map((location, i) => {
+            let ref = i === locations.length - 1 ? lastLocationRef : null;
             return (
               <Styles.divLink
                 to={`/locations/${location.id}`}
                 key={location.id}
+                ref={ref}
                 width="100%"
                 padding="15px"
               >

@@ -31,7 +31,23 @@ export const NavBar = style.div`
 `;
 
 export const NavLink = style(Link)`
+  all: unset;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: rgb(35, 51, 81);
 
+  :hover {
+    color: #53abee;
+    text-decoration: underline #53abee;
+    -webkit-text-stroke: .5px rgb(35, 51, 81);
+  }
+
+  :focus {
+    color: #53abee;
+    text-decoration: underline #53abee;
+    -webkit-text-stroke: .5px rgb(35, 51, 81);
+    border: 1px solid white;
+  }
 `;
 
 export const NavLinksList = style.ul`
@@ -184,6 +200,7 @@ export const heading = style.div`
   font-size: 2.5em;
   font-weight: 700;
   margin-bottom: 20px;
+  color: rgb(35, 51, 81);
 `;
 
 export const CharacterList = style.div`
@@ -238,7 +255,7 @@ export const divLink = style(Link)`
   margin: ${props => props.margin};
   width: ${props => props.width || 'fit-content'};
   padding-top: ${props => props.padding};
-  transition: background-color .2s ease-in-out;
+  transition: background-color .3s ease-in-out;
 
   :hover {
     background-color: rgba(35, 51, 81, 1);

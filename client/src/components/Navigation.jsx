@@ -25,8 +25,9 @@ const Navigation = () => {
           <Styles.Main>
 
             <Styles.NavBar>
-
-              <Styles.Title src={require('../../dist/assets/title.png')} />
+              <Link to='/'>
+                <Styles.Title src={require('../../dist/assets/title.png')} />
+              </Link>
 
               <Styles.NavLinksList>
                 <Styles.listItem>

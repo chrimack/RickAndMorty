@@ -21,6 +21,8 @@ const useFetch = (query) => {
         setLoading(false);
         if (res.data.info.next) {
           setHasMore(true);
+        } else {
+          setHasMore(false);
         }
       })
       .catch(e => console.log(e));

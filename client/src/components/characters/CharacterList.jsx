@@ -63,32 +63,19 @@ const CharacterList = ({ residents, results }) => {
     <>
       <Styles.CharacterList>
         {characters.map((character, i) => {
-          if (i === characters.length - 1) {
-            return (
-              <Styles.divLink
-                to={`/characters/${character.id}`}
-                key={character.id}
-                ref={lastCharacterRef}
-                margin='0 10px 15px 0'
-              >
-                <CharacterProfile
-                  character={character}
-                />
-              </Styles.divLink>
-            );
-          } else {
-            return (
-              <Styles.divLink
-                to={`/characters/${character.id}`}
-                key={character.id}
-                margin='0 10px 15px 0'
-              >
-                <CharacterProfile
-                  character={character}
-                />
-              </Styles.divLink>
-            );
-          }
+          let ref = i === characters.length - 1 ? lastCharacterRef : null;
+          return (
+            <Styles.divLink
+              to={`/characters/${character.id}`}
+              key={character.id}
+              ref={ref}
+              margin='0 10px 15px 0'
+            >
+              <CharacterProfile
+                character={character}
+              />
+            </Styles.divLink>
+          );
         })}
       </Styles.CharacterList>
       <div>{loading && 'Loading...'}</div>
