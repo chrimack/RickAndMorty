@@ -71,7 +71,7 @@ const EpisodesList = ({ charEpisodes, results }) => {
             return (
               <Styles.divLink
                 to={`/episodes/${episode.id}`}
-                key={episode.id}
+                key={i}
                 ref={ref}
                 width="100%"
                 padding="15px">

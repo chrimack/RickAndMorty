@@ -58,7 +58,7 @@ const LocationsList = ({ results }) => {
             return (
               <Styles.divLink
                 to={`/locations/${location.id}`}
-                key={location.id}
+                key={i}
                 ref={ref}
                 width="100%"
                 padding="15px"

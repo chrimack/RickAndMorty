@@ -5,7 +5,7 @@ const useFetch = (query) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [data, setData] = useState({});
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     setData({});
@@ -19,9 +19,7 @@ const useFetch = (query) => {
       .then(res => {
         setData(res.data);
         setLoading(false);
-        if (res.data.info.next) {
-          setHasMore(true);
-        } else {
+        if (!res.data.info.next) {
           setHasMore(false);
         }
       })

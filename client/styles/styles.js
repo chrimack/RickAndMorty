@@ -34,19 +34,13 @@ export const NavLink = style(Link)`
   all: unset;
   cursor: pointer;
   font-size: 1.5em;
-  color: rgb(35, 51, 81);
+  color: ${props => props.color || 'rgb(35, 51, 81)'};
+  -webkit-text-stroke: ${props => props.stroke};
 
   :hover {
     color: #53abee;
     text-decoration: underline #53abee;
     -webkit-text-stroke: .5px rgb(35, 51, 81);
-  }
-
-  :focus {
-    color: #53abee;
-    text-decoration: underline #53abee;
-    -webkit-text-stroke: .5px rgb(35, 51, 81);
-    border: 1px solid white;
   }
 `;
 
@@ -91,7 +85,6 @@ export const Links = style.div`
   grid-area: links;
   display: flex;
   justify-content: space-around;
-  border: 1px solid;
 `;
 
 export const Trailer = style.div`
@@ -101,9 +94,11 @@ export const Trailer = style.div`
 export const linkBox = style.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 100px;
-  border: 1px solid blue;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 250px;
+  background-color: rgba(35, 51, 81, .8);
+  padding: 10px;
 `;
 
 export const link = style.a`
@@ -113,6 +108,11 @@ export const link = style.a`
 
 export const thumbnail = style.img`
   width: 300px;
+  margin: 1px;
+
+  :hover {
+    border: 1px solid white;
+  }
 `;
 
 export const flexWidth = style.div`

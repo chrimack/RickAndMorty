@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
 import LocationsList from './LocationsList.jsx';
 

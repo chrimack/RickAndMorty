@@ -26,18 +26,48 @@ const Home = () => {
         <Styles.Links>
 
           <Styles.linkBox>
-            <Link to="characters">Characters</Link>
-            <Styles.thumbnail src={require('../../../dist/assets/characters.jpeg')} />
+
+            <Styles.NavLink
+              to="characters"
+              color="white"
+              stroke=".5px black">
+                Character
+            </Styles.NavLink>
+
+            <Link to='/characters'>
+              <Styles.thumbnail src={require('../../../dist/assets/characters.jpeg')} />
+            </Link>
+
           </Styles.linkBox>
 
           <Styles.linkBox>
-            <Link to="locations">Locations</Link>
-            <Styles.thumbnail src={require('../../../dist/assets/locations.png')} />
+
+            <Styles.NavLink
+              to="locations"
+              color="white"
+              stroke=".5px black">
+                Locations
+            </Styles.NavLink>
+
+            <Link to='/locations'>
+              <Styles.thumbnail src={require('../../../dist/assets/locations.png')} />
+            </Link>
+
           </Styles.linkBox>
 
           <Styles.linkBox>
-            <Link to="episodes">Episodes</Link>
-            <Styles.thumbnail src={require('../../../dist/assets/episodes.png')} />
+
+            <Styles.NavLink
+              to="episodes"
+              color="white"
+              stroke=".5px black">
+                Episodes
+            </Styles.NavLink>
+
+            <Link to='/episodes'>
+              <Styles.thumbnail src={require('../../../dist/assets/episodes.png')} />
+            </Link>
+
           </Styles.linkBox>
 
         </Styles.Links>
