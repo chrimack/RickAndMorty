@@ -137,7 +137,6 @@ export const displayList = style.div`
   justify-content: flex-start;
   align-items: flex-start;
   overflow: auto;
-  padding-top: 10px;
   background-color: rgba(35, 51, 81, .8);
 `;
 
@@ -176,7 +175,8 @@ export const flexBox = style.div(props => ({
   'align-items': props.align || 'center',
   background: props.background || 'none',
   'border-bottom': props.border,
-  padding: props.padding
+  padding: props.padding,
+  margin: props.margin
 }));
 
 export const heading = style.div`
@@ -189,7 +189,7 @@ export const heading = style.div`
 export const CharacterList = style.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: auto;
   height 65vh;
   padding-right: 10px;
@@ -235,8 +235,14 @@ export const CharThumbnail = style.img`
 export const divLink = style(Link)`
   height: fit-content;
   text-decoration: none;
-  margin-bottom: 15px;
+  margin: ${props => props.margin};
   width: ${props => props.width || 'fit-content'};
+  padding-top: ${props => props.padding};
+  transition: background-color .2s ease-in-out;
+
+  :hover {
+    background-color: rgba(35, 51, 81, 1);
+  }
 `;
 
 export const CharText = style.p`
@@ -248,12 +254,16 @@ export const CharText = style.p`
 export const searchBar = style.input`
   all: unset;
   width: 20vw;
-  margin: 20px 0;
-  background: #233351;
-  opacity: .8;
+  margin: 20px 5px 20px 0;
   color: white;
   font-size: 1.2em;
   padding: 5px;
+  border-bottom: 1px solid white;
+  transition: background-color .2s ease-in-out;
+
+  :focus {
+    background-color: rgba(35, 51, 81, 1);
+  }
 `;
 
 export const displayContainer = style.div`

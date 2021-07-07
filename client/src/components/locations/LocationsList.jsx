@@ -16,7 +16,7 @@ const LocationsList = () => {
         setNextpage(res.data.info.next);
       })
       .catch(e => console.log(e));
-  });
+  }, []);
 
   return (
     <>
@@ -30,6 +30,7 @@ const LocationsList = () => {
                 to={`/locations/${location.id}`}
                 key={location.id}
                 width="100%"
+                padding="15px"
               >
 
                 <Styles.flexBox

@@ -49,6 +49,7 @@ const EpisodesList = ({ charEpisodes }) => {
                 to={`/episodes/${episode.id}`}
                 key={episode.id}
                 width="100%"
+                padding="15px"
               >
 
                 <Styles.flexBox

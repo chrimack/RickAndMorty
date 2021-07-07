@@ -5,9 +5,9 @@ import CharacterProfile from './CharacterProfile.jsx';
 import * as Styles from '../../../styles/styles.js';
 import useFetch from '../../hooks/useFetch.js';
 
-const CharacterList = ({ residents }) => {
+const CharacterList = ({ residents, results }) => {
   const [characters, setCharacters] = useState([]);
-  const [nextPage, setNextpage] = useState('');
+  const [nextPage, setNextpage] = useState('https://rickandmortyapi.com/api/character');
 
   const url = 'https://rickandmortyapi.com/api/character';
 
@@ -15,7 +15,7 @@ const CharacterList = ({ residents }) => {
   // if from nav link, gets first 20 characters
   // if from episodes or locations, get all characters from ep or loc
   useEffect(() => {
-    return residents ? (
+    if (residents) {
       Promise.all(residents.map(person => {
         return axios.get(person);
       }))
@@ -24,15 +24,15 @@ const CharacterList = ({ residents }) => {
             return person.data;
           }));
         })
-    ) : (
-      axios.get(url)
-        .then(res => {
-          setCharacters(res.data.results);
-          setNextpage(res.data.info.next);
-        })
-        .catch(e => console.log(e))
-    );
-  }, []);
+        .catch(e => console.log(e));
+    }
+
+    if (results) {
+      setCharacters(results.results);
+      setNextpage(results.info.next);
+    }
+
+  }, [residents, results]);
 
   const { loading, error, data, hasMore } = useFetch(nextPage);
 
@@ -43,7 +43,7 @@ const CharacterList = ({ residents }) => {
     if (observer.current) { observer.current.disconnect(); }
 
     observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && hasMore) {
+      if (entries[0].isIntersecting && hasMore && !residents) {
         setNextpage(data.info.next);
       }
     });
@@ -52,7 +52,7 @@ const CharacterList = ({ residents }) => {
   });
 
   useEffect(() => {
-    if (data.results) {
+    if (data.results && !residents) {
       setCharacters(prev => [...prev, ...data.results]);
     }
   }, [data.results]);
@@ -69,6 +69,7 @@ const CharacterList = ({ residents }) => {
                 to={`/characters/${character.id}`}
                 key={character.id}
                 ref={lastCharacterRef}
+                margin='0 10px 15px 0'
               >
                 <CharacterProfile
                   character={character}
@@ -80,6 +81,7 @@ const CharacterList = ({ residents }) => {
               <Styles.divLink
                 to={`/characters/${character.id}`}
                 key={character.id}
+                margin='0 10px 15px 0'
               >
                 <CharacterProfile
                   character={character}

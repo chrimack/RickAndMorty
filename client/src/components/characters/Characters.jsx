@@ -13,37 +13,41 @@ const Characters = () => {
     species: '',
     status: ''
   });
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
+  const [error, setError] = useState(false);
 
-  const species = [
-    'Human',
-    'Alien',
-    'Humanoid',
-    'unknown',
-    'Poopybutthole',
-    'Mythological Creature',
-    'Animal',
-    'Robot',
-    'Cronenberg',
-    'Disease',
-    'Planet'
-  ];
-  const status = ['Alive', 'Dead', 'Unknown'];
+  // const species = [
+  //   'Human',
+  //   'Alien',
+  //   'Humanoid',
+  //   'unknown',
+  //   'Poopybutthole',
+  //   'Mythological Creature',
+  //   'Animal',
+  //   'Robot',
+  //   'Cronenberg',
+  //   'Disease',
+  //   'Planet'
+  // ];
+  // const status = ['Alive', 'Dead', 'Unknown'];
 
   const url = 'https://rickandmortyapi.com/api/character';
 
   const handleSearch = () => {
+    if (!search) { return; }
+
+    setError(false);
+
     axios.get(`${url}/?name=${search}`)
       .then(res => {
         if (res.error) {
-          //handle error for no results
+          setError(true);
           return;
         } else {
-          setCharacters(res.data.results);
-          setNextpage(res.data.info.next);
+          setResults(res.data);
         }
-      });
+      })
+      .catch(e => setError(true));
 
     setSearch('');
   };
@@ -56,8 +60,11 @@ const Characters = () => {
       return {...prev, [type]: e.target.value};
     });
 
-    setIsFiltered(true);
   };
+
+  // useEffect(() => {
+
+  // }, [error, results]);
 
   // useEffect(() => {
   //   axios.get(`${url}/?species=${filter.species}$status=${filter.status}`)
@@ -70,9 +77,13 @@ const Characters = () => {
     <>
       <Styles.flexBox
         direction="row"
-        background="#233351"
+        background="rgba(35, 51, 81, .8)"
+        margin="0 0 10px 0"
       >
-        <div>
+        <Styles.flexBox
+          direction="row"
+          padding="4px"
+        >
           <Styles.searchBar
             type="text"
             value={search}
@@ -80,7 +91,7 @@ const Characters = () => {
             onChange={(e) => setSearch(e.target.value)}
           ></Styles.searchBar>
           <i className="fas fa-search" onClick={handleSearch} ></i>
-        </div>
+        </Styles.flexBox>
 
         {/* <div>
           <Styles.displayText>Filter by:</Styles.displayText>
@@ -118,9 +129,25 @@ const Characters = () => {
 
       </Styles.flexBox>
 
-      {isFiltered ? (
-        <CharacterList residents={results} />
-      ) : (
+      {error && (
+        <Styles.flexBox
+          background='rgba(35, 51, 81, .8)'
+          padding="20px"
+        >
+          <Styles.displayText size="3em">
+            Do you see any characters?
+          </Styles.displayText>
+
+          <img src={require('../../../dist/assets/nope.jpeg')} />
+        </Styles.flexBox>
+      )}
+
+
+      {!error && results && (
+        <CharacterList results={results} />
+      )}
+
+      {!error && !results && (
         <CharacterList />
       )}
 
