@@ -22,7 +22,6 @@ const LocationsList = () => {
     <>
       {locations.length ? (
         <Styles.displayList
-          width="100%"
           height="65vw"
         >
           {locations.map(location => {
@@ -36,6 +35,7 @@ const LocationsList = () => {
                 <Styles.flexBox
                   align="flex-start"
                   border="1px solid white"
+                  padding="0 5px"
                 >
 
                   <Styles.displayText size="1.5em">

@@ -40,7 +40,6 @@ const EpisodesList = ({ charEpisodes }) => {
     <>
       {episodes.length ? (
         <Styles.displayList
-          width="100%"
           height="45vh"
         >
           {episodes.map(episode => {
@@ -54,6 +53,7 @@ const EpisodesList = ({ charEpisodes }) => {
                 <Styles.flexBox
                   align="flex-start"
                   border="1px solid white"
+                  padding="0 5px"
                 >
 
                   <Styles.displayText size="1.5em">

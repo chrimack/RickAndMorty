@@ -10,12 +10,6 @@ const CharacterList = ({ residents }) => {
 
   const url = 'https://rickandmortyapi.com/api/character';
 
-  // let people = undefined;
-  // let data = useLocation();
-  // if (data.state) {
-  //   people = data.state.people;
-  // }
-
   // This sets the characters based on where the component was called from
   // if from nav link, gets first 20 characters
   // if from episodes or locations, get all characters from ep or loc

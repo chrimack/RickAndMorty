@@ -27,7 +27,7 @@ export const NavBar = style.div`
   justify-content: space-between;
   align-items: flex-end;
   width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
 `;
 
 export const NavLink = style(Link)`
@@ -123,6 +123,7 @@ export const listItem = style.li`
 export const listText = style.span`
   font-family: 'Big Shoulders Stencil Display', arial;
   color: red;
+  -webkit-text-stroke: 1px black;
   display: block;
   font-size: 8em;
 `;
@@ -132,12 +133,12 @@ export const displayList = style.div`
   flex-direction: column;
   height: ${props => props.height};
   width: ${props => props.width};
-  margin: ${props => props.margin};
+  margin: ${props => props.margin || '5px 0 0 0'};
   justify-content: flex-start;
   align-items: flex-start;
   overflow: auto;
-  padding: 5px 20px;
-  background: #233351
+  padding-top: 10px;
+  background-color: rgba(35, 51, 81, .8);
 `;
 
 export const displayText = style.p(props => ({
@@ -149,7 +150,7 @@ export const displayText = style.p(props => ({
 export const DetailsBox = style.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 `;
 
@@ -167,7 +168,8 @@ export const flexBox = style.div(props => ({
   'flex-direction': props.direction || 'column',
   'align-items': props.align || 'center',
   background: props.background || 'none',
-  border: props.border
+  'border-bottom': props.border,
+  padding: props.padding
 }));
 
 export const heading = style.div`
@@ -195,16 +197,18 @@ export const CharacterProfile = style.div`
 export const CharacterBrief = style.div`
   display: flex;
   flex-direction: column;
+  height: 80px;
   padding-left: 2px;
-  background: #233351;
+  background-color: rgba(35, 51, 81, .8);
   color: white;
+  -webkit-text-stroke: .5px black;
 `;
 
 export const CharacterFull = style.div`
   display: flex;
   flex-direction: column;
   padding-left: 2px;
-  background: #233351;
+  background-color: rgba(35, 51, 81, .8);
   -webkit-text-stroke: 1px black;
   -webkit-text-fill-color: white;
 `;
