@@ -1,41 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { allLocations } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
+import LocationsList from './LocationsList.jsx';
 
 const Locations = () => {
-  const [display, setDisplay] = useState('A');
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState({});
+
+  const handleSearch = () => {
+
+  };
 
   return (
     <>
-      <Styles.flexWidth>
+      <Styles.flexBox
+        direction="row"
+        background="#233351"
+      >
+        <Styles.searchBar
+          type="text"
+          value={search}
+          placeholder="search for your favorite location"
+          onChange={(e) => setSearch(e.target.value)}
+        ></Styles.searchBar>
+        <i className="fas fa-search" onClick={handleSearch} ></i>
+      </Styles.flexBox>
 
-        {Object.keys(allLocations)
-          .map(letter => {
-            return (
-              <span
-                key={letter}
-                onClick={(e) => setDisplay(e.target.innerHTML)}
-              >
-                {letter}
-              </span>
-            );
-          })}
+      <LocationsList />
 
-      </Styles.flexWidth>
-
-      <Styles.displayList>
-
-        {allLocations[display]
-          .map((location, i) => {
-            return (
-              <span key={i}>
-                <Link to={`locations/${location.id}`}>{location.name}</Link>
-              </span>
-            );
-          })}
-
-      </Styles.displayList>
     </>
   );
 };

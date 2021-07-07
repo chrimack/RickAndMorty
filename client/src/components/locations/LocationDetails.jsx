@@ -2,100 +2,44 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
+import CharacterList from '../characters/CharacterList.jsx';
 
 const LocationDetails = () => {
   const [location, setLocation] = useState({});
-  const [characters, setCharacters] = useState([]);
 
   let { id } = useParams();
-
-  const getCharacters = (characters) => {
-    if (!characters.length) {
-      setCharacters([{
-        id: 0,
-        name: '¯\\_(ツ)_/¯'
-      }]);
-      return;
-    }
-
-    let characterIds = '';
-
-    characters.forEach((char, i) => {
-      let id = char.slice(char.lastIndexOf('/') + 1);
-      if (i === char.length - 1) {
-        characterIds += id;
-      } else {
-        characterIds = characterIds + id + ',';
-      }
-    });
-
-    axios.get(`/character/${characterIds}`)
-      .then(res => {
-        let newCharacters = [];
-
-        res.data.forEach(char => {
-          let currentChar = {
-            id: char.id,
-            name: char.name
-          };
-          newCharacters.push(currentChar);
-        });
-
-        setCharacters(newCharacters);
-      })
-      .catch(e => console.log(e));
-  };
+  const url = 'https://rickandmortyapi.com/api/location';
 
   useEffect(() => {
-    if (id) {
-      axios.get(`/location/${id}`)
-        .then(res => {
-
-          setLocation(res.data);
-          getCharacters(res.data.residents);
-        })
-        .catch(e => console.log(e));
-    }
+    axios.get(`${url}/${id}`)
+      .then(res => {
+        setLocation(res.data);
+      })
+      .catch(e => console.log(e));
   }, []);
 
   return (
     <>
-      <Styles.DetailsBox>
+      <Styles.displayContainer>
 
-        <Styles.detailsName>
-          <span>{location.name}</span>
-        </Styles.detailsName>
+        <Styles.DetailsBox>
 
-        <Styles.flexBox>
-          <div>
-            <ul>
-              <li><strong>Type: </strong>{location.type}</li>
-              <li><strong>Dimension: </strong>{location.dimension}</li>
-            </ul>
-          </div>
-          <div>
-            <label>Residents:</label>
-            <ul>
-              {characters.map((character, i) =>{
-                return character.id ? (
-                  <li key={i}>
-                    <Link to={`/characters/${character.id}`}>
-                      {character.name}
-                    </Link>
-                  </li>
-                ) : (
-                  <li key={i}><span>{character.name}</span></li>
-                );
-              })}
-            </ul>
-          </div>
-        </Styles.flexBox>
+          <Styles.displayText size="1.5em">{location.name}</Styles.displayText>
+          <Styles.displayText size="1.2em">
+            Dimension: {location.dimension}
+          </Styles.displayText>
+          <Styles.displayText size="1.2em">
+            Type: {location.type}
+          </Styles.displayText>
 
-        <div>
-          <Link to='/locations'>Back to locations</Link>
-        </div>
+        </Styles.DetailsBox>
 
-      </Styles.DetailsBox>
+      </Styles.displayContainer>
+
+      {location.residents ? (
+        <CharacterList residents={location.residents} />
+      ) : null}
+
     </>
   );
 };

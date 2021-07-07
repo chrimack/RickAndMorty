@@ -147,12 +147,10 @@ export const displayText = style.p(props => ({
 }));
 
 export const DetailsBox = style.div`
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 1000px;
 `;
 
 export const detailsName = style.div`

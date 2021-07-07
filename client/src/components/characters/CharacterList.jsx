@@ -4,24 +4,24 @@ import axios from 'axios';
 import CharacterProfile from './CharacterProfile.jsx';
 import * as Styles from '../../../styles/styles.js';
 
-const CharacterList = () => {
+const CharacterList = ({ residents }) => {
   const [characters, setCharacters] = useState([]);
   const [nextPage, setNextpage] = useState('');
 
   const url = 'https://rickandmortyapi.com/api/character';
 
-  let people = undefined;
-  let data = useLocation();
-  if (data.state) {
-    people = data.state.people;
-  }
+  // let people = undefined;
+  // let data = useLocation();
+  // if (data.state) {
+  //   people = data.state.people;
+  // }
 
   // This sets the characters based on where the component was called from
   // if from nav link, gets first 20 characters
   // if from episodes or locations, get all characters from ep or loc
   useEffect(() => {
-    return people ? (
-      Promise.all(people.map(person => {
+    return residents ? (
+      Promise.all(residents.map(person => {
         return axios.get(person);
       }))
         .then(res => {

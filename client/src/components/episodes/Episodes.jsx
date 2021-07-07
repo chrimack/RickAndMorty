@@ -1,76 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { allEpisodes } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
+import EpisodesList from './EpisodesList.jsx';
 
-const Episodes = ({ charEpisodes }) => {
-  const [episodes, setEpisodes] = useState([]);
-  const [nextPage, setNextpage] = useState(null);
+const Episodes = () => {
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState({});
 
-  const url = 'https://rickandmortyapi.com/api/episode';
+  const handleSearch = () => {
 
-  const getEpisodes = () => {
-    return charEpisodes ? (
-      Promise.all(charEpisodes.map(episode => {
-        return axios.get(episode);
-      }))
-        .then(res => {
-          let newEpisodes = res.map(episode => {
-            return episode.data;
-          });
-
-          setEpisodes(newEpisodes);
-        })
-        .catch(e => console.log(e))
-    ) : (
-      axios.get(url)
-        .then(res => {
-          setEpisodes(res.data.results);
-          setNextpage(res.data.info.next);
-        })
-        .catch(e => console.log(e))
-    );
   };
-
-  useEffect(() => {
-    getEpisodes();
-  }, []);
 
   return (
     <>
-      {episodes.length ? (
-        <Styles.displayList
-          width="100%"
-          height="45vh"
-        >
-          {episodes.map(episode => {
-            return (
-              <Styles.divLink
-                to='/episodes/:id'
-                key={episode.id}
-                width="100%"
-              >
+      <Styles.flexBox
+        direction="row"
+        background="#233351"
+      >
+        <Styles.searchBar
+          type="text"
+          value={search}
+          placeholder="search for your favorite episode"
+          onChange={(e) => setSearch(e.target.value)}
+        ></Styles.searchBar>
+        <i className="fas fa-search" onClick={handleSearch} ></i>
+      </Styles.flexBox>
 
-                <Styles.flexBox
-                  align="flex-start"
-                  border="1px solid white"
-                >
+      <EpisodesList />
 
-                  <Styles.displayText size="1.5em">
-                    {episode.name}
-                  </Styles.displayText>
-                  <Styles.displayText size="1.2em">
-                    Air date: {episode.air_date}
-                  </Styles.displayText>
-
-                </Styles.flexBox>
-
-              </Styles.divLink>
-            );
-          })}
-        </Styles.displayList>
-      ) : null}
     </>
   );
 };

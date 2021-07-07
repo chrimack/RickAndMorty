@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
-import Episodes from '../episodes/Episodes.jsx';
+import EpisodesList from '../episodes/EpisodesList.jsx';
 
 const CharacterDetails = () => {
   const [character, setCharacter] = useState({});
@@ -12,16 +12,12 @@ const CharacterDetails = () => {
   // get id from url
   let { id } = useParams();
 
-
-
   useEffect(() => {
-    // if (id) {
     axios.get(`${url}/${id}`)
       .then(res => {
         setCharacter(res.data);
       })
       .catch(e => console.log(e));
-    // }
   }, []);
 
   return (
@@ -50,7 +46,7 @@ const CharacterDetails = () => {
 
       <Styles.flexWidth width='100%' padding="5px 20px">
         {character.episode ? (
-          <Episodes charEpisodes={character.episode} />
+          <EpisodesList charEpisodes={character.episode} />
         ) : null}
 
       </Styles.flexWidth>
