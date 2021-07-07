@@ -3,57 +3,55 @@ import { useParams, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
-import CharacterDetails from './CharacterDetails.jsx';
-import CharacterProfile from './CharacterProfile.jsx';
+import CharacterList from './CharacterList.jsx';
+
+
 
 const Characters = () => {
-  const [characters, setCharacters] = useState([]);
-  const [nextPage, setNextpage] = useState('');
+  const [search, setSearch] = useState('');
 
-  let people = undefined;
-  let data = useLocation();
-  if (data.state) {
-    people = data.state.people;
-  }
+  const url = 'https://rickandmortyapi.com/api/character';
 
-  useEffect(() => {
-    return people ? (
-      Promise.all(people.map(person => {
-        return axios.get(person);
-      }))
-        .then(res => {
-          setCharacters(res.flatMap(person => {
-            return person.data;
-          }));
-        })
-    ) : (
-      axios.get('https://rickandmortyapi.com/api/character')
-        .then(res => {
+  const handleSearch = () => {
+    axios.get(`${url}/?name=${search}`)
+      .then(res => {
+        if (res.error) {
+          //handle error for no results
+          return;
+        } else {
           setCharacters(res.data.results);
           setNextpage(res.data.info.next);
-        })
-        .catch(e => console.log(e))
-    );
-  }, []);
+        }
+      });
+
+    setSearch('');
+  };
 
   return (
     <>
-      <Styles.CharacterList>
-        {characters.map(character => {
-          return (
-            <Styles.CharLink
-              to={`/characters/${character.id}`}
-              key={character.id}
-            >
-              <CharacterProfile
-                character={character}
-              />
-            </Styles.CharLink>
-          );
-        })}
-      </Styles.CharacterList>
+      <Styles.flexBox
+        direction="row"
+        background="#233351"
+      >
+        <Styles.searchBar
+          type="text"
+          value={search}
+          placeholder="search for your favorite character"
+          onChange={(e) => setSearch(e.target.value)}
+        ></Styles.searchBar>
+        <i className="fas fa-search" onClick={handleSearch} ></i>
+      </Styles.flexBox>
+
+      <CharacterList />
+
     </>
   );
 };
 
 export default Characters;
+
+
+// {
+//   pathname: `/characters/${character.id}`,
+//   state: { person: character.id }
+// }

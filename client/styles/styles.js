@@ -101,9 +101,10 @@ export const thumbnail = style.img`
 
 export const flexWidth = style.div`
   display: flex;
-  justify-content: space-around;
-  width: 70%;
+  justify-content: ${props => props.justify || 'space-around'};
+  width: ${props => props.width || '70%'};
   margin: 0 auto;
+  padding: ${props => props.padding};
 `;
 
 export const smallFlexCol = style.div`
@@ -120,7 +121,7 @@ export const listItem = style.li`
 `;
 
 export const listText = style.span`
-  font-family:  'Big Shoulders Stencil Display', arial;
+  font-family: 'Big Shoulders Stencil Display', arial;
   color: red;
   display: block;
   font-size: 8em;
@@ -129,14 +130,21 @@ export const listText = style.span`
 export const displayList = style.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  height: 25vh;
-  width: 50vw;
-  margin: 30px auto;
-  align-content: space-around;
+  height: ${props => props.height};
+  width: ${props => props.width};
+  margin: ${props => props.margin};
   justify-content: flex-start;
   align-items: flex-start;
+  overflow: auto;
+  padding: 5px 20px;
+  background: #233351
 `;
+
+export const displayText = style.p(props => ({
+  all: 'unset',
+  'font-size': props.size,
+  color: props.color || 'white',
+}));
 
 export const DetailsBox = style.div`
   font-family: sans-serif;
@@ -156,11 +164,13 @@ export const charPic = style.img`
   border-radius: 5%;
 `;
 
-export const flexBox = style.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const flexBox = style.div(props => ({
+  display: 'flex',
+  'flex-direction': props.direction || 'column',
+  'align-items': props.align || 'center',
+  background: props.background || 'none',
+  border: props.border
+}));
 
 export const heading = style.div`
   font-family: 'Syncopate', sans-serif;
@@ -181,14 +191,22 @@ export const CharacterList = style.div`
 export const CharacterProfile = style.div`
   display: flex;
   flex-direction: column;
+  width: ${props => props.width || '280px'};
 `;
 
 export const CharacterBrief = style.div`
   display: flex;
   flex-direction: column;
-  background: #233351;
   padding-left: 2px;
-  opacity: .8;
+  background: #233351;
+  color: white;
+`;
+
+export const CharacterFull = style.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 2px;
+  background: #233351;
   -webkit-text-stroke: 1px black;
   -webkit-text-fill-color: white;
 `;
@@ -200,18 +218,35 @@ export const CharName = style.h3`
 `;
 
 export const CharThumbnail = style.img`
-  width: 280px;
+  width: ${props => props.width || '280px'};
 `;
 
-export const CharLink = style(Link)`
+export const divLink = style(Link)`
   height: fit-content;
   text-decoration: none;
   margin-bottom: 15px;
+  width: ${props => props.width || 'fit-content'};
 `;
 
 export const CharText = style.p`
   all: unset;
   font-size: 1.2em;
-
   opacity: unset;
+`;
+
+export const searchBar = style.input`
+  all: unset;
+  width: 20vw;
+  margin: 20px 0;
+  background: #233351;
+  opacity: .8;
+  color: white;
+  font-size: 1.2em;
+  padding: 5px;
+`;
+
+export const displayContainer = style.div`
+  display: flex;
+  width: 100%;
+
 `;

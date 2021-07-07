@@ -2,92 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
+import Episodes from '../episodes/Episodes.jsx';
 
 const CharacterDetails = () => {
   const [character, setCharacter] = useState({});
-  const [episodes, setEpisodes] = useState([]);
-  const [currentLocation, setCurrentLocation] = useState('');
-  const [origin, setOrigin] = useState('');
+
+  const url = 'https://rickandmortyapi.com/api/character';
 
   // get id from url
   let { id } = useParams();
 
-  const getEpisodes = (episodes) => {
-    let episodeIds = '';
 
-    episodes.forEach((ep, i) => {
-      let id = ep.slice(ep.lastIndexOf('/') + 1);
-      if (i === episodes.length - 1) {
-        episodeIds += id;
-      } else {
-        episodeIds = episodeIds + id + ',';
-      }
-    });
-
-    axios.get(`/episode/${episodeIds}`)
-      .then(res => {
-        let newEpisodes = [];
-
-        if (episodes.length > 1) {
-          res.data.forEach(ep => {
-            newEpisodes.push(ep.name);
-          });
-        } else {
-          newEpisodes.push(res.data.name);
-        }
-
-        setEpisodes(newEpisodes);
-      })
-      .catch(e => console.log(e));
-  };
 
   useEffect(() => {
-    if (id) {
-      axios.get(`/character/${id}`)
-        .then(res => {
-          setCharacter(res.data);
-          getEpisodes(res.data.episode);
-        })
-        .catch(e => console.log(e));
-    }
+    // if (id) {
+    axios.get(`${url}/${id}`)
+      .then(res => {
+        setCharacter(res.data);
+      })
+      .catch(e => console.log(e));
+    // }
   }, []);
 
   return (
-    character.name ? (
-      <Styles.DetailsBox>
+    <Styles.displayContainer>
+      <Styles.CharacterProfile width='350px'>
 
-        <Styles.charPic src={character.image} alt={character.name} />
-        <Styles.detailsName>
-          <span>{character.name}</span>
-        </Styles.detailsName>
+        <Styles.CharThumbnail src={character.image} width="350px" />
 
-        <Styles.flexBox>
-          <div>
-            <ul>
-              <li><strong>Origin: </strong> {character.origin.name}</li>
-              <li><strong>Current Location: </strong>{character.location.name}</li>
-              <li><strong>Status: </strong>{character.status}</li>
-              <li><strong>Species: </strong>{character.species}</li>
-              {character.type ? <li><strong>Type: </strong>{character.type}</li> : null}
+        <Styles.CharacterFull>
 
-            </ul>
-          </div>
-          <div>
-            <label>Episodes:</label>
-            <ul>
-              {episodes.map((episode, i) => {
-                return <li key={i}>{episode}</li>;
-              })}
-            </ul>
-          </div>
-        </Styles.flexBox>
+          <Styles.CharName>{character.name}</Styles.CharName>
 
-        <div>
-          <Link to='/characters'>Back to characters</Link>
-        </div>
+          <Styles.flexWidth>
 
-      </Styles.DetailsBox>
-    ) : null
+            <Styles.CharText>Status: {character.status}</Styles.CharText>
+            <Styles.CharText>Species: {character.species}</Styles.CharText>
+            { character.type ? (
+              <Styles.CharText>Type: {character.type}</Styles.CharText>
+            ) : null}
+
+          </Styles.flexWidth>
+
+        </Styles.CharacterFull>
+
+      </Styles.CharacterProfile>
+
+      <Styles.flexWidth width='100%' padding="5px 20px">
+        {character.episode ? (
+          <Episodes charEpisodes={character.episode} />
+        ) : null}
+
+      </Styles.flexWidth>
+
+    </Styles.displayContainer>
   );
 };
 

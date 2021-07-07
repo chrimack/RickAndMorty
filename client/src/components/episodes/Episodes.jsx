@@ -1,41 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { allEpisodes } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
 
-const Episodes = () => {
-  const [display, setDisplay] = useState('S01');
+const Episodes = ({ charEpisodes }) => {
+  const [episodes, setEpisodes] = useState([]);
+  const [nextPage, setNextpage] = useState(null);
+
+  const url = 'https://rickandmortyapi.com/api/episode';
+
+  const getEpisodes = () => {
+    return charEpisodes ? (
+      Promise.all(charEpisodes.map(episode => {
+        return axios.get(episode);
+      }))
+        .then(res => {
+          let newEpisodes = res.map(episode => {
+            return episode.data;
+          });
+
+          setEpisodes(newEpisodes);
+        })
+        .catch(e => console.log(e))
+    ) : (
+      axios.get(url)
+        .then(res => {
+          setEpisodes(res.data.results);
+          setNextpage(res.data.info.next);
+        })
+        .catch(e => console.log(e))
+    );
+  };
+
+  useEffect(() => {
+    getEpisodes();
+  }, []);
 
   return (
     <>
-      <Styles.flexWidth>
-
-        {Object.keys(allEpisodes)
-          .map((season, i) => {
+      {episodes.length ? (
+        <Styles.displayList
+          width="100%"
+          height="45vh"
+        >
+          {episodes.map(episode => {
             return (
-              <span
-                key={season}
-                title={season}
-                onClick={(e) => setDisplay(e.target.title)}
+              <Styles.divLink
+                to='/episodes/:id'
+                key={episode.id}
+                width="100%"
               >
-                Season {i + 1}
-              </span>
+
+                <Styles.flexBox
+                  align="flex-start"
+                  border="1px solid white"
+                >
+
+                  <Styles.displayText size="1.5em">
+                    {episode.name}
+                  </Styles.displayText>
+                  <Styles.displayText size="1.2em">
+                    Air date: {episode.air_date}
+                  </Styles.displayText>
+
+                </Styles.flexBox>
+
+              </Styles.divLink>
             );
           })}
-
-      </Styles.flexWidth>
-
-      <Styles.displayList>
-
-        {allEpisodes[display].map((episode, i) => {
-          return (
-            <span key={i}>
-              <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
-            </span>
-          );
-        })}
-
-      </Styles.displayList>
+        </Styles.displayList>
+      ) : null}
     </>
   );
 };
