@@ -22,7 +22,7 @@ const CharacterDetails = () => {
 
   return (
     <Styles.displayContainer>
-      <Styles.CharacterProfile width='350px'>
+      <Styles.CharacterProfile width='350px' margin="10px">
 
         <Styles.CharThumbnail src={character.image} width="350px" />
 

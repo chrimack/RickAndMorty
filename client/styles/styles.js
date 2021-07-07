@@ -145,6 +145,7 @@ export const displayText = style.p(props => ({
   all: 'unset',
   'font-size': props.size,
   color: props.color || 'white',
+  '-webkit-text-stroke': '.5px black'
 }));
 
 export const DetailsBox = style.div`
@@ -152,6 +153,12 @@ export const DetailsBox = style.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  height: 100px;
+  background-color: rgba(35, 51, 81, .8);
+  width: 100%;
+  margin: 10px auto;
+  padding: 5px;
+
 `;
 
 export const detailsName = style.div`
@@ -184,14 +191,16 @@ export const CharacterList = style.div`
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: auto;
-  height 70vw;
+  height 65vh;
   padding-right: 10px;
+  margin-top: 10px;
 `;
 
 export const CharacterProfile = style.div`
   display: flex;
   flex-direction: column;
   width: ${props => props.width || '280px'};
+  margin-top: ${props => props.margin};
 `;
 
 export const CharacterBrief = style.div`

@@ -21574,7 +21574,7 @@ let locations = [
   }
 ];
 
-export const allCharacters = characters
+const allCharacters = characters
   .sort((a, b) => a.name.localeCompare(b.name))
   .reduce((r, e) => {
     let key = e.name[0];
@@ -21592,7 +21592,7 @@ export const allCharacters = characters
 //     return r;
 //   }, {});
 
-export const allLocations = locations
+const allLocations = locations
   .sort((a, b) => a.name.localeCompare(b.name))
   .reduce((r, e) => {
     let key = e.name[0];
@@ -21626,5 +21626,11 @@ const getEps = () => {
   return results;
 };
 
-export const allEpisodes = getEps();
+const allEpisodes = getEps();
+let types = {};
+let species = {};
 
+chars.forEach(c => {
+  types[c.type] ? types[c.type] += 1 : types[c.type] = 1;
+  species[c.species] ? species[c.species] += 1 : species[c.species] = 1;
+});

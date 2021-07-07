@@ -9,6 +9,27 @@ import CharacterList from './CharacterList.jsx';
 
 const Characters = () => {
   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState({
+    species: '',
+    status: ''
+  });
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [results, setResults] = useState([]);
+
+  const species = [
+    'Human',
+    'Alien',
+    'Humanoid',
+    'unknown',
+    'Poopybutthole',
+    'Mythological Creature',
+    'Animal',
+    'Robot',
+    'Cronenberg',
+    'Disease',
+    'Planet'
+  ];
+  const status = ['Alive', 'Dead', 'Unknown'];
 
   const url = 'https://rickandmortyapi.com/api/character';
 
@@ -27,22 +48,81 @@ const Characters = () => {
     setSearch('');
   };
 
+  const handleFilter = async (e) => {
+    let type = e.target.parentNode.innerHTML.includes
+    ('Status') ? 'status' : 'species';
+
+    setFilter(prev => {
+      return {...prev, [type]: e.target.value};
+    });
+
+    setIsFiltered(true);
+  };
+
+  // useEffect(() => {
+  //   axios.get(`${url}/?species=${filter.species}$status=${filter.status}`)
+  //     .then(res => {
+  //       setResults(res.data.results);
+  //     });
+  // }, [isFiltered, filter]);
+
   return (
     <>
       <Styles.flexBox
         direction="row"
         background="#233351"
       >
-        <Styles.searchBar
-          type="text"
-          value={search}
-          placeholder="search for your favorite character"
-          onChange={(e) => setSearch(e.target.value)}
-        ></Styles.searchBar>
-        <i className="fas fa-search" onClick={handleSearch} ></i>
+        <div>
+          <Styles.searchBar
+            type="text"
+            value={search}
+            placeholder="search for your favorite character"
+            onChange={(e) => setSearch(e.target.value)}
+          ></Styles.searchBar>
+          <i className="fas fa-search" onClick={handleSearch} ></i>
+        </div>
+
+        {/* <div>
+          <Styles.displayText>Filter by:</Styles.displayText>
+          <label>
+            Status
+            <select
+              value={filter.status}
+              onChange={handleFilter}
+            >
+              <option value=''></option>
+              {status.map(s => {
+                return (
+                  <option key={s} value={s}>{s}</option>
+                );
+              })}
+            </select>
+          </label>
+
+          <label>
+            Species
+            <select
+              value={filter.species}
+              onChange={handleFilter}
+            >
+              <option value=''></option>
+              {species.map(s => {
+                return (
+                  <option key={s} value={s}>{s}</option>
+                );
+              })}
+            </select>
+          </label>
+        </div> */}
+
+
       </Styles.flexBox>
 
-      <CharacterList />
+      {isFiltered ? (
+        <CharacterList residents={results} />
+      ) : (
+        <CharacterList />
+      )}
 
     </>
   );

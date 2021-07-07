@@ -22,7 +22,7 @@ const LocationsList = () => {
     <>
       {locations.length ? (
         <Styles.displayList
-          height="65vw"
+          height="65vh"
         >
           {locations.map(location => {
             return (

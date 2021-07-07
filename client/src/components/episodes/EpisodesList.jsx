@@ -40,7 +40,8 @@ const EpisodesList = ({ charEpisodes }) => {
     <>
       {episodes.length ? (
         <Styles.displayList
-          height="45vh"
+          height={charEpisodes ? 'fit-content' : '65vh'}
+          width={charEpisodes ? '100%' : 'auto'}
         >
           {episodes.map(episode => {
             return (
