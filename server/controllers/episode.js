@@ -1,6 +1,6 @@
 const Episode = require('../../db/models/Episode');
 
-exports.addEpisode = (req, res) => {
+exports.add = (req, res) => {
   let episode = req.body;
 
   const newEpisode = new Episode(episode);
@@ -13,8 +13,20 @@ exports.addEpisode = (req, res) => {
     });
 };
 
-exports.getAllEpisodes = (req, res) => {
+exports.getAll = (req, res) => {
   return Episode.find({})
+    .then(response => res.send(response))
+    .catch(e => {
+      console.log(e);
+      res.send();
+    });
+};
+
+exports.getOne = (req, res) => {
+  let id = req.url.slice(req.url.lastIndexOf('/') + 1);
+  console.log(req.url, id);
+
+  return Episode.find({episodeId: id})
     .then(response => res.send(response))
     .catch(e => {
       console.log(e);

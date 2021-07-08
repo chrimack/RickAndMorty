@@ -1,6 +1,6 @@
 const Character = require('../../db/models/Character');
 
-exports.addCharacter = (req, res) => {
+exports.add = (req, res) => {
   let character = req.body;
 
   const newCharacter = new Character(character);
@@ -13,7 +13,7 @@ exports.addCharacter = (req, res) => {
     });
 };
 
-exports.getAllCharacters = (req, res) => {
+exports.getAll = (req, res) => {
   return Character.find({})
     .then(response => res.send(response))
     .catch(e => {

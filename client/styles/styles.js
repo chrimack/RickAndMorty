@@ -124,6 +124,7 @@ export const flexWidth = style.div`
   width: ${props => props.width || '70%'};
   margin: 0 auto;
   padding: ${props => props.padding};
+  background: ${props => props.background};
 `;
 
 export const smallFlexCol = style.div`
@@ -172,11 +173,10 @@ export const DetailsBox = style.div`
   align-items: flex-start;
   justify-content: space-between;
   height: 100px;
-  background-color: rgba(35, 51, 81, .8);
+  background-color: ${props => props.background || 'rgba(35, 51, 81, .8)'};
   width: 100%;
   margin: 10px auto;
   padding: 5px;
-
 `;
 
 export const detailsName = style.div`
