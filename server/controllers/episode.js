@@ -24,7 +24,6 @@ exports.getAll = (req, res) => {
 
 exports.getOne = (req, res) => {
   let id = req.url.slice(req.url.lastIndexOf('/') + 1);
-  console.log(req.url, id);
 
   return Episode.find({episodeId: id})
     .then(response => res.send(response))
