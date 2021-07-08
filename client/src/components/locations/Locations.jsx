@@ -49,22 +49,21 @@ const Locations = () => {
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
         </Styles.flexBox>
 
-        {error && (
-          <Styles.flexBox
-            background='rgba(35, 51, 81, .8)'
-            padding="20px">
-
-            <Styles.displayText size="3em">
-              Do you see anything?
-            </Styles.displayText>
-
-            <img src={require('../../../dist/assets/nope.jpeg')} />
-
-          </Styles.flexBox>
-        )}
-
       </Styles.flexBox>
 
+      {error && (
+        <Styles.flexBox
+          background='rgba(35, 51, 81, .8)'
+          padding="20px">
+
+          <Styles.displayText size="3em">
+            Do you see anything?
+          </Styles.displayText>
+
+          <img src={require('../../../dist/assets/nope.jpeg')} />
+
+        </Styles.flexBox>
+      )}
 
       {!error && results && (
         <LocationsList results={results} />

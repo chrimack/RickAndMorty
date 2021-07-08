@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     background: url(${background}) no-repeat center center fixed;
     background-size: cover;
+    cursor: default;
   }
 `;
 
@@ -273,16 +274,18 @@ export const CharText = style.p`
 
 export const searchBar = style.input`
   all: unset;
+  cursor: text;
   width: 20vw;
   margin: 20px 5px 20px 0;
   color: white;
   font-size: 1.2em;
   padding: 5px;
   border-bottom: 1px solid white;
-  transition: background-color .2s ease-in-out;
+  transition: all .2s ease-in-out;
 
   :focus {
     background-color: rgba(35, 51, 81, 1);
+    border-radius: 5px;
   }
 `;
 

@@ -78,19 +78,21 @@ const Characters = () => {
       <Styles.flexBox
         direction="row"
         background="rgba(35, 51, 81, .8)"
-        margin="0 0 10px 0"
-      >
+        margin="0 0 10px 0">
+
         <Styles.flexBox
           direction="row"
-          padding="4px"
-        >
+          padding="4px">
+
           <Styles.searchBar
             type="text"
             value={search}
             placeholder="search for your favorite character"
-            onChange={(e) => setSearch(e.target.value)}
-          ></Styles.searchBar>
+            onChange={(e) => setSearch(e.target.value)}>
+          </Styles.searchBar>
+
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
+
         </Styles.flexBox>
 
         {/* <div>
@@ -132,8 +134,8 @@ const Characters = () => {
       {error && (
         <Styles.flexBox
           background='rgba(35, 51, 81, .8)'
-          padding="20px"
-        >
+          padding="20px">
+
           <Styles.displayText size="3em">
             Do you see any characters?
           </Styles.displayText>
@@ -141,7 +143,6 @@ const Characters = () => {
           <img src={require('../../../dist/assets/nope.jpeg')} />
         </Styles.flexBox>
       )}
-
 
       {!error && results && (
         <CharacterList results={results} />
