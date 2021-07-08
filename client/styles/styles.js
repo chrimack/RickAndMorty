@@ -99,6 +99,7 @@ export const linkBox = style.div`
   height: 250px;
   background-color: rgba(35, 51, 81, .8);
   padding: 10px;
+  border-radius: 5px;
 `;
 
 export const link = style.a`
@@ -301,5 +302,34 @@ export const icon = style.i`
   :hover {
     color: white;
     border: 1px solid white;
+  }
+`;
+
+export const video = style.div`
+  overflow: hidden;
+  padding-bottom: 50%;
+  position: relative;
+  height: 0;
+
+`;
+
+export const wrapper = style.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const frame = style.div`
+  float: left;
+  width: 400px;
+  margin: 10px;
+`;
+
+export const clear = style.div`
+  :before,
+  :after {
+    content: "";
+    display: table;
   }
 `;

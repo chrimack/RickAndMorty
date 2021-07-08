@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 import Characters from '../characters/Characters.jsx';
 import Locations from '../locations/Locations.jsx';
 import Episodes from '../episodes/Episodes.jsx';
 import Countdown from './Countdown.jsx';
 import Trailer from './Trailer.jsx';
+import Youtube from './Youtube.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -73,8 +75,26 @@ const Home = () => {
         </Styles.Links>
 
         <Styles.Trailer>
-          <Trailer />
+          <Styles.wrapper>
+
+            <Styles.frame>
+
+              <TwitterTimelineEmbed
+                sourceType="profile"
+                screenName="RickandMorty"
+                options={{height: 500, width: 400, align: 'left'}}
+              />
+
+            </Styles.frame>
+
+            <Styles.frame>
+
+              <Youtube />
+            </Styles.frame>
+
+          </Styles.wrapper>
         </Styles.Trailer>
+        <Styles.clear></Styles.clear>
 
       </Styles.HomeGrid>
 
