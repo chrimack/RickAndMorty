@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
 import EpisodesList from './EpisodesList.jsx';
+import Modal from '../modal/Modal.jsx';
 
 const Episodes = () => {
   const [search, setSearch] = useState('');
   const [results, setResults] = useState(null);
   const [error, setError] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const url = 'https://rickandmortyapi.com/api/episode';
 
@@ -49,6 +51,8 @@ const Episodes = () => {
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
         </Styles.flexBox>
 
+        <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button>
+
       </Styles.flexBox>
 
       {error && (
@@ -72,6 +76,8 @@ const Episodes = () => {
       {!error && !results && (
         <EpisodesList />
       )}
+
+      {showForm && <Modal type='episode' setShowForm={setShowForm} />}
 
     </>
   );

@@ -1,16 +1,18 @@
 import React from 'react';
 import Home from './home/Home.jsx';
+// import ModalSwitch from './modal/ModalSwitch.jsx';
 import Characters from './characters/Characters.jsx';
-import Locations from './locations/Locations.jsx';
-import Episodes from './episodes/Episodes.jsx';
 import CharacterDetails from './characters/CharacterDetails.jsx';
+import Locations from './locations/Locations.jsx';
 import LocationDetails from './locations/LocationDetails.jsx';
+import Episodes from './episodes/Episodes.jsx';
 import EpisodeDetails from './episodes/EpisodeDetails.jsx';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from 'react-router-dom';
 import * as Styles from '../../styles/styles.js';
 
@@ -66,6 +68,7 @@ const Navigation = () => {
 
           </Styles.Main>
         </Styles.NavBackground>
+        {/* <ModalSwitch /> */}
       </Router>
     </>
   );

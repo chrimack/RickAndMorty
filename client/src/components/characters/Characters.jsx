@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
-import { allCharacters } from '../../data.js';
 import * as Styles from '../../../styles/styles.js';
 import CharacterList from './CharacterList.jsx';
+import Modal from '../modal/Modal.jsx';
 
 
 
@@ -15,6 +15,9 @@ const Characters = () => {
   });
   const [results, setResults] = useState(null);
   const [error, setError] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
+  let location = useLocation();
 
   // const species = [
   //   'Human',
@@ -52,15 +55,15 @@ const Characters = () => {
     setSearch('');
   };
 
-  const handleFilter = async (e) => {
-    let type = e.target.parentNode.innerHTML.includes
-    ('Status') ? 'status' : 'species';
+  // const handleFilter = async (e) => {
+  //   let type = e.target.parentNode.innerHTML.includes
+  //   ('Status') ? 'status' : 'species';
 
-    setFilter(prev => {
-      return {...prev, [type]: e.target.value};
-    });
+  //   setFilter(prev => {
+  //     return {...prev, [type]: e.target.value};
+  //   });
 
-  };
+  // };
 
   // useEffect(() => {
 
@@ -94,6 +97,8 @@ const Characters = () => {
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
 
         </Styles.flexBox>
+
+        <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button>
 
         {/* <div>
           <Styles.displayText>Filter by:</Styles.displayText>
@@ -151,6 +156,8 @@ const Characters = () => {
       {!error && !results && (
         <CharacterList />
       )}
+
+      {showForm && <Modal type='character' setShowForm={setShowForm}/>}
 
     </>
   );

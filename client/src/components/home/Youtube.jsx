@@ -7,7 +7,7 @@ const Youtube = () => {
   const [embedId, setEmbedId] = useState();
 
   useEffect(() => {
-    axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCgPClNr5VSYC3syrDUIlzLw&maxResults=1&order=date&q=rick%20and%20morty&key=${token}`)
+    axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCgPClNr5VSYC3syrDUIlzLw&maxResults=1&order=date&q=rick%20and%20morty&type=video&videoEmbeddable=true&key=${token}`)
       .then(res => {
         setEmbedId(res.data.items[0].id.videoId);
       })
@@ -31,3 +31,9 @@ const Youtube = () => {
 };
 
 export default Youtube;
+
+
+// GET https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCgPClNr5VSYC3syrDUIlzLw&maxResults=1&order=date&q=rick%20and%20morty&type=video&videoEmbeddable=true&key=[YOUR_API_KEY] HTTP/1.1
+
+// Authorization: Bearer [YOUR_ACCESS_TOKEN]
+// Accept: application/json
