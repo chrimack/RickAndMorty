@@ -8,6 +8,8 @@ const CharacterDetails = () => {
   const [character, setCharacter] = useState({});
   const [location, setLocation] = useState('');
   const [origin, setOrigin] = useState('');
+  const [showInput, setShowInput] = useState(false);
+  const [summary, setSummary] = useState('');
 
   useEffect(() => {
     if (character.location) {
@@ -32,7 +34,35 @@ const CharacterDetails = () => {
         setCharacter(res.data);
       })
       .catch(e => console.log(e));
+
+    axios.get(`/characters/${id}`)
+      .then(res => {
+        if (res.data.length) {
+          setCharacter(prev => {
+            return {...prev, summary: res.data[0].summary};
+          });
+        }
+      })
+      .catch(e => console.log(e));
   }, []);
+
+  const handleClick = () => {
+    setCharacter(prev => {
+      return {...prev, summary: summary};
+    });
+
+    setShowInput(false);
+
+    let info = {
+      name: character.name,
+      _id: id,
+      summary: summary,
+    };
+
+    axios.post(`/characters/${id}`, info)
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
+  };
 
   return (
     <Styles.displayContainer>
@@ -76,7 +106,7 @@ const CharacterDetails = () => {
                 align="flex-start"
                 border="1px solid white">
 
-                <Styles.displayText size="1.5em">Location:</Styles.displayText>
+                <Styles.displayText size="1.5em">Location: </Styles.displayText>
                 <Styles.displayText size="1.2em">{character.location.name}</Styles.displayText>
 
               </Styles.flexBox>
@@ -95,7 +125,7 @@ const CharacterDetails = () => {
                 align="flex-start"
                 border="1px solid white">
 
-                <Styles.displayText size="1.5em">Origin:</Styles.displayText>
+                <Styles.displayText size="1.5em">Origin: </Styles.displayText>
                 <Styles.displayText size="1.2em">{character.origin.name}</Styles.displayText>
 
               </Styles.flexBox>
@@ -103,14 +133,87 @@ const CharacterDetails = () => {
             </Styles.divLink>
           )}
 
+          <Styles.flexBox
+            align="flex-start"
+            padding="0 5px 5px 0">
+
+            <Styles.displayText size="1.5em">Summary: </Styles.displayText>
+
+            {character.summary ? (
+              <Styles.flexWidth
+                width="100%"
+                justify="flex-start">
+
+                <Styles.displayText size="1.2em">{character.summary}</Styles.displayText>
+
+              </Styles.flexWidth>
+            ) : (
+              <Styles.flexWidth
+                justify="space-between"
+                width="100%">
+
+                <Styles.displayText size="1.2em">Nothing to see here folks. </Styles.displayText>
+                <Styles.Button
+                  onClick={() => setShowInput(true)}>
+
+                  <Styles.displayText
+                    size="1em"
+                    color="#233351">
+                    Add a summary
+                  </Styles.displayText>
+
+                </Styles.Button>
+              </Styles.flexWidth>
+            )}
+
+          </Styles.flexBox>
+
         </Styles.CharacterFull>
+
+        {showInput && (
+          <Styles.flexBox
+            align="flex-start"
+            margin="10px 0 0 0"
+            padding="3px">
+
+            <Styles.flexWidth
+              justify="space-around"
+              width="100%">
+
+              <label htmlFor="summary">
+                <Styles.displayText size="1.5em">Write a summary:</Styles.displayText>
+              </label>
+
+              <Styles.Button onClick={handleClick}>
+
+                <Styles.displayText
+                  size="1em"
+                  color="#233351">
+                  Push it
+                </Styles.displayText>
+
+              </Styles.Button>
+
+            </Styles.flexWidth>
+
+            <textarea
+              style={{width: '100%', zIndex: '2'}}
+              id="summary"
+              rows="20"
+              autoFocus
+              placeholder="Tell us something we don't know..."
+              onChange={(e) => setSummary(e.target.value)}
+            />
+          </Styles.flexBox>
+        )}
 
       </Styles.CharacterProfile>
 
       <Styles.flexWidth width='100%' padding="5px 20px">
-        {character.episode ? (
+
+        {character.episode && (
           <EpisodesList charEpisodes={character.episode} />
-        ) : null}
+        )}
 
       </Styles.flexWidth>
 

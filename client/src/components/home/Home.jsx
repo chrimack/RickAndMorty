@@ -33,7 +33,7 @@ const Home = () => {
               to="characters"
               color="white"
               stroke=".5px black">
-                Character
+                Characters
             </Styles.NavLink>
 
             <Link to='/characters'>
@@ -89,7 +89,7 @@ const Home = () => {
 
             <Styles.frame>
 
-              <Youtube />
+              {/* <Youtube /> */}
             </Styles.frame>
 
           </Styles.wrapper>

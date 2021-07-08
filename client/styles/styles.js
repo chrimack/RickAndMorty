@@ -336,3 +336,19 @@ export const clear = style.div`
     display: table;
   }
 `;
+
+export const Button = style.button`
+  all: unset;
+  background: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0px 6px 6px 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  :hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgb(35, 51, 81);
+  }
+`;

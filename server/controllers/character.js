@@ -21,3 +21,35 @@ exports.getAll = (req, res) => {
       res.send();
     });
 };
+
+exports.getOne = (req, res) => {
+  let id = req.url.slice(req.url.lastIndexOf('/') + 1);
+
+  return Character.find({ _id: id })
+    .then(response => res.send(response))
+    .catch((e) => {
+      console.log(e);
+      res.send();
+    });
+};
+
+exports.findAndUpdate = (req, res) => {
+  let id = req.body._id;
+  // let query = { _id: id };
+  let update = {
+    name: req.body.name,
+    summary: req.body.summary
+  };
+  let options = {
+    new: true,
+    upsert: true,
+    setDefaultsOnInsert: true
+  };
+
+  return Character.findByIdAndUpdate(id, update, options)
+    .then(response => res.send(response))
+    .catch(e => {
+      console.log(e);
+      res.send();
+    });
+};

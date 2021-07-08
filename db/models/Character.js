@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const characterSchema = new mongoose.Schema({
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
+  name: { type: String, required: true },
   status: String,
   species: String,
   type: String,
@@ -10,7 +9,9 @@ const characterSchema = new mongoose.Schema({
   origin: String,
   location: String,
   image: String,
-  episodes: [String]
+  episodes: [String],
+  summary: String,
+  _id: { type: String, required: true }
 });
 
 const Character = mongoose.model('Character', characterSchema);

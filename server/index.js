@@ -20,6 +20,10 @@ app.get(`${url}/*`, (req, res) => {
     .catch(e => res.send(e));
 });
 
+app.post('/characters/*', character.findAndUpdate);
+
+app.get('/characters/*', character.getOne);
+
 app.post('/episodes', episode.add);
 
 app.get('/episodes/*', episode.getOne);
