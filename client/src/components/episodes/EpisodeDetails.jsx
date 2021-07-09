@@ -36,12 +36,14 @@ const EpisodeDetails = () => {
         <Styles.flexWidth
           width="100%"
           justify="space-around"
-          background="rgba(35,51,81,.8)">
+          background="rgba(35,51,81,.8)"
+          radius="5px">
 
           {episode.image &&
             <Styles.CharThumbnail
               src={episode.image}
               width="300px"
+              radius="5px"
             />
           }
 

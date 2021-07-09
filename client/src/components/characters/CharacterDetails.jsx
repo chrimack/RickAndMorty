@@ -177,7 +177,7 @@ const CharacterDetails = () => {
             padding="3px">
 
             <Styles.flexWidth
-              justify="space-around"
+              justify="space-between"
               width="100%">
 
               <label htmlFor="summary">

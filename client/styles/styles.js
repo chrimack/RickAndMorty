@@ -111,8 +111,8 @@ export const link = style.a`
 export const thumbnail = style.img`
   width: 300px;
   margin: 1px;
-  border: 1px solid rgba(35,51,81,.8);
-  transition: border-color .3s ease-in-out;
+  border: 1px solid transparent;
+  transition: border-color .2s ease-in-out;
 
   :hover {
     border: 1px solid white;
@@ -126,6 +126,7 @@ export const flexWidth = style.div`
   margin: 0 auto;
   padding: ${props => props.padding};
   background: ${props => props.background};
+  border-radius: ${props => props.radius || '0'};
 `;
 
 export const smallFlexCol = style.div`
@@ -159,6 +160,8 @@ export const displayList = style.div`
   align-items: flex-start;
   overflow: auto;
   background-color: rgba(35, 51, 81, .8);
+  border-radius: 5px;
+
 `;
 
 export const displayText = style.p(props => ({
@@ -177,6 +180,7 @@ export const DetailsBox = style.div`
   background-color: ${props => props.background || 'rgba(35, 51, 81, .8)'};
   width: 100%;
   margin: 10px auto;
+  border-radius: 5px;
   padding: 5px;
 `;
 
@@ -196,7 +200,8 @@ export const flexBox = style.div(props => ({
   background: props.background || 'none',
   'border-bottom': props.border,
   padding: props.padding,
-  margin: props.margin
+  margin: props.margin,
+  'border-radius': props.radius || '0'
 }));
 
 export const heading = style.div`
@@ -212,7 +217,7 @@ export const CharacterList = style.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   overflow: auto;
-  height 65vh;
+  height 80vh;
   padding-right: 10px;
   margin-top: 10px;
 `;
@@ -232,6 +237,8 @@ export const CharacterBrief = style.div`
   background-color: rgba(35, 51, 81, .8);
   color: white;
   -webkit-text-stroke: .5px black;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 `;
 
 export const CharacterFull = style.div`
@@ -239,8 +246,8 @@ export const CharacterFull = style.div`
   flex-direction: column;
   padding-left: 2px;
   background-color: rgba(35, 51, 81, .8);
-  -webkit-text-stroke: 1px black;
-  -webkit-text-fill-color: white;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 `;
 
 export const CharName = style.h3`
@@ -251,6 +258,9 @@ export const CharName = style.h3`
 
 export const CharThumbnail = style.img`
   width: ${props => props.width || '280px'};
+  border-radius: ${props => props.radius || '0'};
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 `;
 
 export const divLink = style(Link)`
@@ -259,10 +269,13 @@ export const divLink = style(Link)`
   margin: ${props => props.margin};
   width: ${props => props.width || 'fit-content'};
   padding-top: ${props => props.padding};
-  transition: background-color .3s ease-in-out;
+  border: ${props => props.border || 'none'};
+  border-radius: ${props => props.radius || '0'};
+  transition: all .2s ease-in-out;
 
   :hover {
     background-color: rgba(35, 51, 81, 1);
+    border-color: white;
   }
 `;
 
@@ -292,12 +305,13 @@ export const searchBar = style.input`
 export const displayContainer = style.div`
   display: flex;
   width: 100%;
+  border-radius: 5px;
 
 `;
 
 export const icon = style.i`
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
   margin: 3px;
   padding: 5px;
   border-radius: 50%;
@@ -345,7 +359,7 @@ export const Button = style.button`
   padding: 5px;
   margin: 0px 6px 6px 0;
   cursor: pointer;
-  transition: all .3s ease-in-out;
+  transition: all .2s ease-in-out;
 
   :hover {
     background: rgba(255, 255, 255, 1);

@@ -36,6 +36,10 @@ const Characters = () => {
 
   const url = 'https://rickandmortyapi.com/api/character';
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') { handleSearch(); }
+  };
+
   const handleSearch = () => {
     if (!search) { return; }
 
@@ -76,6 +80,7 @@ const Characters = () => {
   //     });
   // }, [isFiltered, filter]);
 
+
   return (
     <>
       <Styles.flexBox
@@ -91,7 +96,8 @@ const Characters = () => {
             type="text"
             value={search}
             placeholder="search for your favorite character"
-            onChange={(e) => setSearch(e.target.value)}>
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyPress={handleKeyPress}>
           </Styles.searchBar>
 
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>

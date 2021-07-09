@@ -82,15 +82,15 @@ const Home = () => {
               <TwitterTimelineEmbed
                 sourceType="profile"
                 screenName="RickandMorty"
-                options={{height: 500, width: 500}}
+                options={{height: 480, width: 500}}
               />
 
             </Styles.frame>
 
-            {/* <Styles.frame>
+            <Styles.frame>
 
               <Youtube />
-            </Styles.frame> */}
+            </Styles.frame>
 
           </Styles.wrapper>
         </Styles.Trailer>

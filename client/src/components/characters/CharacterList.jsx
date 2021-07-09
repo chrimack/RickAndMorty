@@ -70,7 +70,9 @@ const CharacterList = ({ residents, results }) => {
               key={character.id}
               ref={ref}
               margin='0 10px 15px 0'
-            >
+              border="1px solid transparent"
+              radius="5px">
+
               <CharacterProfile
                 character={character}
               />
