@@ -51,7 +51,8 @@ const Episodes = () => {
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
         </Styles.flexBox>
 
-        <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button>
+        {/* For adding new episodes */}
+        {/* <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button> */}
 
       </Styles.flexBox>
 

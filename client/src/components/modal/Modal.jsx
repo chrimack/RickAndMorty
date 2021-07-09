@@ -1,66 +1,89 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import * as Styles from '../../../styles/styles.js';
 
 const Modal = ({ type, setShowForm }) => {
+  const [inputs, setInputs] = useState([]);
+  const [values, setValues] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
+  let characterVals = [
+    'Name',
+    'Status',
+    'Species',
+    'Type',
+    'Origin',
+    'Location'
+  ];
+
+  let episodeVals = ['Name', 'Air date', 'Episode'];
+
+  useEffect(() => {
+    type === 'character' ? setInputs(characterVals) : setInputs(episodeVals);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`/${type}s`, values)
+      .then(res => console.log(res))
+      .catch(e => console.log(e));
+
+    setValues({});
+    setIsSubmitted(true);
+  };
 
   return (
     <>
       <Styles.modalOverlay onClick={() => setShowForm(false)} />
 
       <Styles.modal background="rgb(35, 51, 81)">
+
         <form>
-          <label>
-            Name:
-            <input type="text" required />
-          </label>
+          {inputs.map(input => {
+            return (
+              <div key={input}>
+                <label>
+                  <Styles.displayText>
+                    {input}:
+                    <input
+                      type="text"
+                      value={values[input.toLowerCase()] || ''}
+                      onChange={(e) => setValues(prev => {
+                        let i = input.toLowerCase();
+                        return {...prev, [i]: e.target.value};
+                      })}
+                      required
+                    />
+                  </Styles.displayText>
+                </label>
+              </div>
+            );
+          })}
 
           {type === 'character' && (
-            <>
-              <label>
-                Status:
-                <input type="text" required />
-              </label>
-              <label>
-                Species:
-                <input type="text" />
-              </label>
-              <label>
-                Origin:
-                <input type="text" />
-              </label>
-              <label>
-                Current location:
-                <input type="text" />
-              </label>
-              <label>
+            <div>
+              <Styles.displayText>
+                <label>
                 Character summary:
-                <textarea
-                  rows="5"
-                  placeholder="Tell us something we don't know..."
-                />
-              </label>
-            </>
+                  <input
+                    type="textarea"
+                    rows="10"
+                    onChange={(e) => setValues(prev => {
+                      return {...prev, summary: e.target.value};
+                    })}
+                  />
+                </label>
+              </Styles.displayText>
+            </div>
           )}
 
-          {type === 'episode' && (
-            <>
-              <label>
-                Air date:
-                <input type="date" required />
-              </label>
-              <label>
-                Episode number:
-                <input type="text" placeholder="S01E01" required />
-              </label>
-              <label>
-                Characters:
-                <input type="text" placeholder="Do me a favor and get the character id from their url" />
-              </label>
-            </>
-          )}
+          <input type="submit" onClick={handleSubmit} value="Submit" />
 
         </form>
+
+        {isSubmitted && (
+          <Styles.displayText>You did...ya know, the thing!</Styles.displayText>
+        )}
 
       </Styles.modal>
     </>

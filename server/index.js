@@ -20,13 +20,13 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 //     .catch(e => res.send(e));
 // });
 
-app.post('/characters/*', character.findAndUpdate);
+app.post('/characters*', character.findAndUpdate);
 
-app.get('/characters/*', character.getOne);
+app.get('/characters*', character.getOne);
 
-app.post('/episodes', episode.add);
+app.post('/episodes*', episode.add);
 
-app.get('/episodes/*', episode.getOne);
+app.get('/episodes*', episode.getOne);
 
 app.listen(port, () => {
   console.log('its working');

@@ -98,7 +98,8 @@ const Characters = () => {
 
         </Styles.flexBox>
 
-        <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button>
+        {/* This is for adding a new character */}
+        {/* <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button> */}
 
         {/* <div>
           <Styles.displayText>Filter by:</Styles.displayText>

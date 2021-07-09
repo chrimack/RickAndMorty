@@ -163,7 +163,7 @@ export const displayList = style.div`
 
 export const displayText = style.p(props => ({
   all: 'unset',
-  'font-size': props.size,
+  'font-size': props.size || '1.2em',
   color: props.color || 'white',
   '-webkit-text-stroke': '.5px black'
 }));

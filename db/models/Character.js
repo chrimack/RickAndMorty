@@ -8,7 +8,9 @@ const characterSchema = new mongoose.Schema({
   gender: String,
   origin: String,
   location: String,
-  image: String,
+  image: {
+    type: String,
+    default: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg'},
   episodes: [String],
   summary: String,
   _id: { type: String, required: true }
