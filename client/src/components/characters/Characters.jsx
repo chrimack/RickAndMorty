@@ -19,21 +19,6 @@ const Characters = () => {
 
   let location = useLocation();
 
-  // const species = [
-  //   'Human',
-  //   'Alien',
-  //   'Humanoid',
-  //   'unknown',
-  //   'Poopybutthole',
-  //   'Mythological Creature',
-  //   'Animal',
-  //   'Robot',
-  //   'Cronenberg',
-  //   'Disease',
-  //   'Planet'
-  // ];
-  // const status = ['Alive', 'Dead', 'Unknown'];
-
   const url = 'https://rickandmortyapi.com/api/character';
 
   const handleKeyPress = (e) => {
@@ -58,6 +43,22 @@ const Characters = () => {
 
     setSearch('');
   };
+
+  // const species = [
+  //   'Human',
+  //   'Alien',
+  //   'Humanoid',
+  //   'unknown',
+  //   'Poopybutthole',
+  //   'Mythological Creature',
+  //   'Animal',
+  //   'Robot',
+  //   'Cronenberg',
+  //   'Disease',
+  //   'Planet'
+  // ];
+  // const status = ['Alive', 'Dead', 'Unknown'];
+
 
   // const handleFilter = async (e) => {
   //   let type = e.target.parentNode.innerHTML.includes
@@ -86,7 +87,8 @@ const Characters = () => {
       <Styles.flexBox
         direction="row"
         background="rgba(35, 51, 81, .8)"
-        margin="0 0 10px 0">
+        margin="0 0 10px 0"
+        radius="5px">
 
         <Styles.flexBox
           direction="row"
@@ -104,9 +106,15 @@ const Characters = () => {
 
         </Styles.flexBox>
 
+        {results && (
+          <Styles.Button onClick={() => setResults(null)}>Clear search</Styles.Button>
+        )}
+
         {/* This is for adding a new character */}
         {/* <Styles.Button onClick={() => setShowForm(true)}>add</Styles.Button> */}
 
+
+        {/* This is for filtering */}
         {/* <div>
           <Styles.displayText>Filter by:</Styles.displayText>
           <label>
@@ -172,8 +180,3 @@ const Characters = () => {
 
 export default Characters;
 
-
-// {
-//   pathname: `/characters/${character.id}`,
-//   state: { person: character.id }
-// }

@@ -54,7 +54,7 @@ const EpisodesList = ({ charEpisodes, results }) => {
   });
 
   useEffect(() => {
-    if (data.results && !charEpisodes) {
+    if (data.results && !charEpisodes && !results) {
       setEpisodes(prev => [...prev, ...data.results]);
     }
   }, [data.results]);
@@ -71,7 +71,7 @@ const EpisodesList = ({ charEpisodes, results }) => {
 
   return (
     <>
-      {episodes.length ? (
+      {episodes.length && (
         <Styles.displayList
           height={height}
           width={charEpisodes ? '100%' : 'auto'}>
@@ -106,7 +106,7 @@ const EpisodesList = ({ charEpisodes, results }) => {
           })}
 
         </Styles.displayList>
-      ) : null}
+      )}
     </>
   );
 };

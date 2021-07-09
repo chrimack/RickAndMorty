@@ -34,6 +34,9 @@ const CharacterList = ({ residents, results }) => {
 
   }, [residents, results]);
 
+  // loading & error bool for request status
+  // data response from request
+  // hasMore bool for next page
   const { loading, error, data, hasMore } = useFetch(nextPage);
 
   const observer = useRef();
@@ -52,7 +55,7 @@ const CharacterList = ({ residents, results }) => {
   });
 
   useEffect(() => {
-    if (data.results && !residents) {
+    if (data.results && !residents && !results) {
       setCharacters(prev => [...prev, ...data.results]);
     }
   }, [data.results]);

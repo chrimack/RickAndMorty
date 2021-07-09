@@ -10,6 +10,10 @@ const Locations = () => {
 
   const url = 'https://rickandmortyapi.com/api/location';
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') { handleSearch(); }
+  };
+
   const handleSearch = () => {
     if (!search) { return; }
 
@@ -34,7 +38,8 @@ const Locations = () => {
       <Styles.flexBox
         direction="row"
         background="rgba(35, 51, 81, .8)"
-        margin="0 0 10px 0">
+        margin="0 0 10px 0"
+        radius="5px">
 
         <Styles.flexBox
           direction="row"
@@ -45,9 +50,14 @@ const Locations = () => {
             value={search}
             placeholder="search for your favorite location"
             onChange={(e) => setSearch(e.target.value)}
-          ></Styles.searchBar>
+            onKeyPress={handleKeyPress}>
+          </Styles.searchBar>
           <Styles.icon className="fas fa-search" onClick={handleSearch} ></Styles.icon>
         </Styles.flexBox>
+
+        {results && (
+          <Styles.Button onClick={() => setResults(null)}>Clear search</Styles.Button>
+        )}
 
       </Styles.flexBox>
 

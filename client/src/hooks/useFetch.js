@@ -15,15 +15,19 @@ const useFetch = (query) => {
     setLoading(true);
     setError(false);
 
-    axios.get(query)
-      .then(res => {
-        setData(res.data);
-        setLoading(false);
-        if (!res.data.info.next) {
-          setHasMore(false);
-        }
-      })
-      .catch(e => console.log(e));
+    if (query) {
+
+      axios.get(query)
+        .then(res => {
+          setData(res.data);
+          setLoading(false);
+          if (!res.data.info.next) {
+            setHasMore(false);
+          }
+        })
+        .catch(e => console.log(e));
+
+    }
   }, [query]);
 
   return { loading, error, data, hasMore };

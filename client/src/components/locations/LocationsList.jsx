@@ -42,7 +42,7 @@ const LocationsList = ({ results }) => {
   });
 
   useEffect(() => {
-    if (data.results) {
+    if (data.results && !results) {
       setLocations(prev => [...prev, ...data.results]);
     }
   }, [data.results]);

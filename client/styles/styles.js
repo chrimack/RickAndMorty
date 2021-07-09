@@ -216,6 +216,7 @@ export const CharacterList = style.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-content: flex-start;
   overflow: auto;
   height 80vh;
   padding-right: 10px;
@@ -314,11 +315,13 @@ export const icon = style.i`
   transition: all .2s ease-in-out;
   margin: 3px;
   padding: 5px;
+  border: 1px solid transparent;
   border-radius: 50%;
+  transition: all .2s ease-in-out;
 
   :hover {
     color: white;
-    border: 1px solid white;
+    border-color: white;
   }
 `;
 
