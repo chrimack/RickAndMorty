@@ -11,16 +11,27 @@ export const GlobalStyle = createGlobalStyle`
     background: url(${background}) no-repeat center center fixed;
     background-size: cover;
     cursor: default;
+    font-family: 'Acme', sans-serif;
   }
 `;
 
 export const Main = style.div`
-  font-family: 'Acme', sans-serif;
   max-width: 1200px;
   margin: 0 auto;
 `;
 
 export const NavBackground = style.div`
+`;
+
+export const Footer = style.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3vh;
+  background: rgba(35, 51, 81, .8);
+  display: flex;
+  justify-content: center
 `;
 
 export const NavBar = style.div`
@@ -321,6 +332,21 @@ export const icon = style.i`
 
   :hover {
     color: white;
+    border-color: white;
+  }
+`;
+
+export const linkIcon = style.i`
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  margin: 3px;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: all .2s ease-in-out;
+  color: white;
+
+  :hover {
     border-color: white;
   }
 `;

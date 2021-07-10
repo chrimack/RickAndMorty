@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack -w",
+    "build": "webpack build",
     "start": "nodemon ./server/index.js"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/chrimack/RickAndMorty#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "mongoose": "^5.13.2",
     "nodemon": "^2.0.7",

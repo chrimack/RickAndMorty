@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const compression = require('compression');
+
 const db = require('../db');
 const character = require('./controllers/character');
 const episode = require('./controllers/episode');
@@ -10,6 +12,7 @@ const app = express();
 const port = 3000;
 const url = 'https://rickandmortyapi.com/api';
 
+app.use(compression());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
