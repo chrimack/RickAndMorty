@@ -1,14 +1,12 @@
 # Riki
 ![Riki](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/countdown.png?raw=true)
 ### Rick and Morty wiki
-
 <table>
-  <tr>
-    <td>
-  A wiki app for Rick and Morty using the amazing [Rick and Morty API](https://rickandmortyapi.com/). <br> Most of the info comes from the API, 
-  but users can edit or update the existing characters as well as add new characters, <br> episodes, and locations as the come out.
-    </td>
-  <tr>
+<tr>
+<td>
+  A webapp using Quandl API to display history of stock growth in a given period of time. It helps predict the growth of stocks from the  charts of stock performace in any period of time. It helps to judge stocks, with the principle of momentum investing, which returns 1% per month on average.
+</td>
+</tr>
 </table>
 
 
