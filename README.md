@@ -27,6 +27,9 @@
 | **Landing Page** | **Character List** | **Character Profile** |
 :----: | :----: | :----:
 <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/home.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/characters.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/profile.png" width="300px" />
+| **Episode List** | **Location List** | **Episode** |
+:----: | :----: | :----:
+<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/episodes.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/locations.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/episode.png" width="300px" />
 
 ## To-do
 - Complete user interaction functionality
