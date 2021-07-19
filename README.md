@@ -24,18 +24,9 @@
 ### Episode List
 <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/episodes.png" width="300px" />
 
-<table>
-<tr>
-
-<td>
-**Landing Page**
-<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/home.png" width="300px" />
-</td>
-<td></td>
-<td></td>
-
-</tr>
-</table>
+| **Landing Page** | **Character List** | **Character Profile** |
+:----: | :----: | :----:
+<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/home.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/characters.png" width="300px" /> | <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/profile.png" width="300px" />
 
 ## To-do
 - Complete user interaction functionality
