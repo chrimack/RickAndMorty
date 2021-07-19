@@ -13,7 +13,7 @@
 
 ## Screenshots
 ### Landing Page
-![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/home.png?raw=true)
+![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/home.png?raw=true =300x)
 
 ### Character List
 ![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/characters.png?raw=true)
