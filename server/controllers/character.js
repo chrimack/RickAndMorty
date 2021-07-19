@@ -1,4 +1,5 @@
 const Character = require('../../db/models/Character');
+const path = require('path');
 
 exports.add = (req, res) => {
   let character = req.body;

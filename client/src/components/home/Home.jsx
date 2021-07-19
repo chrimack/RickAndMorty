@@ -87,10 +87,10 @@ const Home = () => {
 
             </Styles.frame>
 
-            {/* <Styles.frame>
+            <Styles.frame>
 
               <Youtube />
-            </Styles.frame> */}
+            </Styles.frame>
 
           </Styles.wrapper>
         </Styles.Trailer>

@@ -12,6 +12,7 @@ const app = express();
 const port = 3000;
 const url = 'https://rickandmortyapi.com/api';
 
+
 app.use(compression());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
@@ -30,6 +31,11 @@ app.get('/characters*', character.getOne);
 app.post('/episodes*', episode.add);
 
 app.get('/episodes*', episode.getOne);
+
+app.get('/*', ((req, res) => {
+  const html = path.join(__dirname, 'client', 'dist', 'index.html');
+  res.sendFile(html);
+}));
 
 app.listen(port, () => {
   console.log('its working');

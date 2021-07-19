@@ -3,7 +3,7 @@ import * as Styles from '../../../styles/styles.js';
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    let airTime = new Date('Jul 11, 2021 22:00:00').getTime();
+    let airTime = new Date('Jul 25, 2021 22:00:00').getTime();
     let now = new Date().getTime();
     let timeLeft = {};
 
