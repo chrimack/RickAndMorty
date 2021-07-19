@@ -1,2 +1,2 @@
-# RickAndMorty
-Rick and Morty wiki
+# Riki
+## Rick and Morty wiki
