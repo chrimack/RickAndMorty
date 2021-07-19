@@ -1,3 +1,3 @@
 # Riki
-![Riki](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/home.png?raw=true)
+![Riki](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/countdown.png?raw=true)
 ### Rick and Morty wiki
