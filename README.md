@@ -12,17 +12,6 @@
 
 
 ## Screenshots
-### Landing Page
-<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/home.png" width="300px" />
-
-### Character List
-<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/characters.png" width="300px" />
-
-### Character Profile
-<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/profile.png" width="300px" />
-
-### Episode List
-<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/episodes.png" width="300px" />
 
 | **Landing Page** | **Character List** | **Character Profile** |
 :----: | :----: | :----:
