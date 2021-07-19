@@ -5,7 +5,7 @@
 <table>
   <tr>
     <td>
-  A wiki app for Rick and Morty using the amazing [Rick and Morty API](https://rickandmortyapi.com/). The most of the info comes from the API, <br>
+  A wiki app for Rick and Morty using the amazing [Rick and Morty API](https://rickandmortyapi.com/). <br> Most of the info comes from the API, 
   but users can edit or update the existing characters as well as add new characters, episodes, and locations as the come out.
     </td>
   <tr>
