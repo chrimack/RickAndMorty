@@ -11,20 +11,18 @@
 </table>
 
 
-### Screenshots
+## Screenshots
 
-<hr>
 
-### To-do
+## To-do
+- Complete user interaction functionality
+- Apply CSS transitions
 
-<hr>
-
-### Tech Stack
-
-<hr>
+## Tech Stack
 
 Front end: [React](https://reactjs.org/), [React Router](https://reactrouter.com/), [Axios](https://axios-http.com/), [styled-components](https://styled-components.com/), [styled-normalize](https://www.npmjs.com/package/styled-normalize)
 <br>
 Back end: [Node,js](https://nodejs.org/en/), [Express.js](https://expressjs.com/), [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/), 
 
 ### Author
+[@chrimack](github.com/chrimack)
