@@ -13,16 +13,15 @@
 
 ## Screenshots
 ### Landing Page
-![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/home.png?raw=true&s=300)
 <img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/home.png" width="300px" />
 ### Character List
-![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/characters.png?raw=true | width=300)
+<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/characters.png" width="300px" />
 
 ### Character Profile
-![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/profile.png?raw=true)
+<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/character.png" width="300px" />
 
 ### Episode List
-![](https://github.com/chrimack/RickAndMorty/blob/media/pics/screenshots/episodes.png?raw=true)
+<img src="https://raw.githubusercontent.com/chrimack/RickAndMorty/media/pics/screenshots/episodes.png" width="300px" />
 
 
 
